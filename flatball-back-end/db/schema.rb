@@ -13,9 +13,9 @@
 ActiveRecord::Schema.define(version: 20180507153549) do
 
   create_table "games", force: :cascade do |t|
-    t.string "location"
     t.integer "home_score"
     t.integer "away_score"
+    t.integer "out_count"
   end
 
   create_table "users", force: :cascade do |t|

@@ -12,7 +12,7 @@ class Game {
 
     store.game_stats.push(this)
   }
-
+  
   render(){
     console.log(this);
   }

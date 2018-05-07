@@ -1,5 +1,5 @@
 store = {
-  live_game: [],
+  live_game: {strikes: 0, outs: 0, foul_balls: 0, bases: [0,0,0,0]},
   game_stats: []
 }
 

@@ -1,12 +1,4 @@
 document.addEventListener('DOMContentLoaded', function(){
-
-  function newGame(e){
-    new Game().render()
-
-
-    inningCount()
-  }
-
   // calling on new game function that sets up an object for a new game to be
   //played when page loads
 
@@ -69,13 +61,13 @@ document.addEventListener('DOMContentLoaded', function(){
   // New game button click functionality //
   newGameButton.addEventListener('click', playBallHandler)
   function playBallHandler () {
+    new Game().render()
     appBody.innerHTML = ""
     appBody.append(battersControlsContainer, pitchersControlsContainer)
+
+    //can remove ---- for viewing/testing in console
+    inningCount()
   }
-
-
-  const startGame = document.querySelector('#start-game')
-  startGame.addEventListener('click', newGame)
 
 
   function inningCount(){

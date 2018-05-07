@@ -1,13 +1,11 @@
 store = {
-  // live_game: [on_base: [1, 2, null], strikes: 2, outs: 6],
+  live_game: [],
   game_stats: []
-  // home_team: [score:],
-  // away_team: [score:]
 }
 
 
 class Game {
-  constructor({home_score, away_score, out_count}){
+  constructor(home_score = 0, away_score = 0, out_count = 0){
     this.home_score = home_score
     this.away_score = away_score
     this.out_count = out_count

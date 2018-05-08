@@ -56,11 +56,11 @@ document.addEventListener('DOMContentLoaded', function(){
   const inningDetailsDiv = document.createElement('div')
   inningDetailsDiv.setAttribute('id', 'inningDetailsDiv')
   let current_inning = inningCount()
-  inningDetailsDiv.innerHTML = `<ul><h1>Inning: ${current_inning} </h1></ul>
-  <li id="strikes">Strikes: ${store.live_game.strikes}</li>
-  <li id="balls">Balls: ${store.live_game.balls}</li>
-  <li id="fouls">Foul Balls: ${store.live_game.foul_balls}</li>
-  <li id="outs">Outs: ${store.live_game.outs}</li>`
+  inningDetailsDiv.innerHTML = `<div><h1 id="inning">Inning: ${current_inning}</div></h1></div>
+  <div id="strikes">Strikes: ${store.live_game.strikes}</div><br>
+  <div id="balls">Balls: ${store.live_game.balls}</div><br>
+  <div id="fouls">Foul Balls: ${store.live_game.foul_balls}</div><br>
+  <div id="outs">Outs: ${store.live_game.outs}</div>`
   //end//
 
 
@@ -96,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
   //Our Code-Logic "Baseball Diamond" [false,false,false,false] 0 index being [1st Base]
-  let basePositions = store.live_game.bases
   //will flip to true when theres a baserunner on that base//
   //when index 3 becomes true a run is scored//
   //Batter Hit Result Helper Functions - //
@@ -113,7 +112,10 @@ document.addEventListener('DOMContentLoaded', function(){
   const runnersOnSecondAndThird = [false,true,true,false]
 
   // all runners adv 1 spot //
-  const single = function singles(basePositions){
+  // Each if is a different base scenario in which//
+  // a different result would occur on the bases//
+  const single = function singles(){
+    let basePositions = store.live_game.bases
     let aSingle = 1
     if (asingle && basePositions === emptyBases){
       basePositions = runnerOnFirst
@@ -147,7 +149,10 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   }
     // all runners adv 2 spots//
-  const double = function doubles(basePositions){
+    // Each if is a different base scenario in which//
+    // a different result would occur on the bases//
+  const double = function doubles(){
+    let basePositions = store.live_game.bases
     let aDouble = 2
     if (aDouble && basePositions === emptyBases){
       basePositions = runnerOnSecond
@@ -175,7 +180,10 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   }
     // all runners adv 3 spots//
-  const triple = function triples(basePositions){
+    // Each if is a different base scenario in which//
+    // a different result would occur on the bases//
+  const triple = function triples(){
+    let basePositions = store.live_game.bases
     let aTriple = 3
     if (aTriple && basePositions === emptyBases){
       basePositions = runnerOnThird
@@ -196,27 +204,60 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   }
 
-  const homerun = function homeruns(basePositions){}
+  const homerun = function homeruns(
+  ){
+    let basePositions = store.live_game.bases
+    //Vresets our live_game bases to being cleared ..since homerun//
+    const basesCleared = store.live_game.bases = [false,false,false,false]
+    if (basePositions === emptyBases){
+      store.game_stats.home_score + 1
+      basesCleared
+    }
+    if (basePositions === runnerOnFirst &&
+        basePositions === runnerOnSecond &&
+        basePositions === runnerOnThird){
+      store.game_stats.home_score + 2
+      basesCleared
+    }
+    if (basePositions === runnersOnFirstAndThird &&
+        basePositions === runnersOnFirstAndSecond &&
+        basePositions === runnersOnSecondAndThird){
+      store.game_stats.home_score + 3
+      basesCleared
+    }
+    if (basePositions === basesLoaded){
+      store.game_stats.home_score + 4
+      basesCleared
+    }
+
+  }
+
+  //TESTING BRANCH REMOVED RETURN//
   // tally truths in array + 1 = runs scored / reset bases
   const so = function strikeout(){}
   // +1 to outs
-  const bob = function walk (basePositions){
+  const bob = function walk (){
+    let basePositions = store.live_game.bases
     let BaseOnBalls = 1
     if (BaseOnBalls && basePositions === emptyBases){
       basePositions = runnerOnFirst
+      store.game_stats.home_score + 1
       return console.log("The Pitcher has walked the batter, The Batter has gone to first base!")
     }else if (BaseOnBalls && basePositions === runnerOnFirst || basePositions === runnerOnSecond){
-      basePositions = runnersOnFirstAndSecond
-      return console.log("The Pitcher has walked the batter, runners are now on first and second base!")
-    }else if (BaseOnBalls && basePositions === runnersOnFirstAndSecond || basePositions === runnersOnFirstAndThird || basePositions === runnersOnSecondAndThird){
-      basePositions = basesLoaded
-      return console.log("The Pitcher has walked the batter, bases are now loaded!")
-    }else if (BaseOnBalls && basePositions === basesLoaded){
-      basePositions = basesLoaded
+      return basePositions = runnersOnFirstAndSecond
       store.game_stats.home_score + 1
-      return console.log("The Pitcher has walked the batter, One run scores! The bases remain loaded!")
+      console.log("The Pitcher has walked the batter, runners are now on first and second base!")
+    }else if (BaseOnBalls && basePositions === runnersOnFirstAndSecond || basePositions === runnersOnFirstAndThird || basePositions === runnersOnSecondAndThird){
+      return basePositions = basesLoaded
+      store.game_stats.home_score + 1
+      console.log("The Pitcher has walked the batter, bases are now loaded!")
+    }else if (BaseOnBalls && basePositions === basesLoaded){
+      return basePositions = basesLoaded
+      store.game_stats.home_score + 1
+      console.log("The Pitcher has walked the batter, One run scores! The bases remain loaded!")
     }else if (BaseOnBalls && basePositions === runnersOnThird){
       basePositions = runnersOnFirstAndThird
+      store.game_stats.home_score + 1
       return console.log("The Pitcher has walked the batter, runners are now on first and third base!")
     }
   }
@@ -367,7 +408,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 
-
+//How to fix inning just make it a div instead of a ul
+//and then just make the list items p tags/divs...//
 //this needs to be worked on produces Undefined currently//
 //on the right track with it though//
   function inningCount(){

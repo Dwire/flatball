@@ -216,6 +216,8 @@ document.addEventListener('DOMContentLoaded', function(){
   //for a new a batter//
   // This function will generate a random play in the game //
   // This function is utilized in controller-button handler functions below it//
+
+
   function executePlay (){
     randPlay = Math.floor(Math.random()*4) + 1
     // b = ball s = strike f = foul ball o = out //
@@ -224,34 +226,69 @@ document.addEventListener('DOMContentLoaded', function(){
     const f = document.getElementById('fouls')
     const o = document.getElementById('outs')
 
+
     switch (randPlay) {
       case 1:
-      store.live_game.strikes += 1
-      s.innerText =`Strikes: ${store.live_game.strikes}`
-      alert(`Strike ${store.live_game.strikes}`)
+        store.live_game.strikes += 1
+        if (store.live_game.strikes === 3) {
+          alert('Strike Out')
+          store.live_game.outs += 1
+          out(s,f,b,o)
+        }else{
+          s.innerText =`Strikes: ${store.live_game.strikes}`
+          // alert(`Strike ${store.live_game.strikes}`)
+        }
       break;
       case 2:
-      store.live_game.balls += 1
-      b.innerText = `Balls: ${store.live_game.balls}`
-      alert(`Ball ${store.live_game.balls}`)
+        store.live_game.balls += 1
+        b.innerText = `Balls: ${store.live_game.balls}`
+        // alert(`Ball ${store.live_game.balls}`)
       break;
       case 3:
-      store.live_game.foul_balls += 1
-      store.live_game.strikes += 1
-      s.innerText = `Strikes: ${store.live_game.strikes}`
-      f.innerText = `Foul Balls: ${store.live_game.foul_balls}`
-      alert(`Foul Ball! That's Strike ${store.live_game.strikes}`)
+        store.live_game.foul_balls += 1
+        if (store.live_game.strikes < 2){
+          store.live_game.strikes += 1
+          displayStats(s,f,b,o)
+        }else{
+          displayStats(s,f,b,o)
+        }
+      // alert(`Foul Ball! That's Strike ${store.live_game.strikes}`)
       break;
       case 4:
-      store.live_game.outs += 1
-      o.innerText = `Outs: ${store.live_game.outs}`
-      store.game_stats.out_count +=1
-      alert(`Out ${store.live_game.outs}`)
+        store.live_game.outs += 1
+        store.game_stats.out_count +=1
+        out(s,f,b,o)
       break;
     }
     console.log(store.live_game)
   }
 
+  function out(s,f,b,o) {
+    if (store.live_game.outs === 3) {
+
+      alert('3 Outs SWITCH')
+      // NOTE: Change Inning
+      store.live_game.strikes = 0
+      store.live_game.foul_balls = 0
+      store.live_game.balls = 0
+      store.live_game.outs = 0
+
+      displayStats(s,f,b,o)
+    }else{
+      store.live_game.strikes = 0
+      store.live_game.foul_balls = 0
+      store.live_game.balls = 0
+
+      displayStats(s,f,b,o)
+    }
+  }
+
+  function displayStats(s,f,b,o){
+    s.innerText = `Strikes: ${store.live_game.strikes}`
+    f.innerText = `Foul Balls: ${store.live_game.foul_balls}`
+    b.innerText = `Balls: ${store.live_game.balls}`
+    o.innerText =`Outs: ${store.live_game.outs}`
+  }
 
   //batter's controller events
   bPower.addEventListener('click', powerHandler)

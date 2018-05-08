@@ -93,18 +93,109 @@ document.addEventListener('DOMContentLoaded', function(){
   //end//
 
 
+
+
   //Our Code-Logic "Baseball Diamond" [false,false,false,false] 0 index being [1st Base]
-  const basePositions = store.live_game.bases
+  let basePositions = store.live_game.bases
   //will flip to true when theres a baserunner on that base//
   //when index 3 becomes true a run is scored//
   //Batter Hit Result Helper Functions - //
   //- to move baserunners and score runs logic //
-  const single = function singles(basePositions){}
-  // all runners adv 1 spot
-  const double = function doubles(basePositions){}
-  // all runners adv 2 spots
-  const triple = function triples(basePositions){}
-  // all runners adv 3 spots
+
+  //Possible Base positions variables to make code more readable below//
+  const emptyBases = [false,false,false,false]
+  const runnerOnFirst = [true,false,false,false]
+  const runnerOnSecond = [false,true,false,false]
+  const runnerOnThird = [false,false,true,false]
+  const runnersOnFirstAndSecond = [true,true,false,false]
+  const basesLoaded = [true,true,true,false]
+  const runnersOnFirstAndThird = [true,false,true,false]
+  const runnersOnSecondAndThird = [false,true,true,false]
+
+  // all runners adv 1 spot //
+  const single = function singles(basePositions){
+    let aSingle = 1
+    if (asingle && basePositions === emptyBases){
+      basePositions = runnerOnFirst
+      return "Its a single! Safe at first!"
+    }else if (aSingle && basePositions === runnerOnFirst){
+      basePositions = runnersOnFirstAndSecond
+      return "Its a single! Runners are safe at first and second!"
+    }else if (aSingle && basePositions === runnersOnFirstAndSecond){
+      basePositions = basesLoaded
+      return "Its a single! The bases are now loaded!"
+    }else if (aSingle && basePositions === basesLoaded){
+      basePositions = basesLoaded
+      //if home team batting logic else will put score for the away team//
+      store.game_stats.home_score + 1
+      return "Its a single! One run scores!! The bases remain loaded!"
+    }else if (aSingle && basePositions === runnersOnFirstAndThird){
+      basePositions = runnersOnFirstAndSecond
+      store.game_stats.home_score + 1
+      return "Its a single! One run scores!! Runners are safe at first and second!"
+    }else if (aSingle && basePositions === runnersOnSecondAndThird){
+      basePositions = runnersOnFirstAndThird
+      store.game_stats.home_score + 1
+      return "Its a single! One run scores!! Runners are safe at first and third!"
+    }else if (aSingle && basePositions === runnerOnSecond){
+      basePositions = runnersOnFirstAndThird
+      return "Its a single! Runners are safe at first and third!"
+    }else if (aSingle && basePositions === runnersOnThird){
+      basePositions = runnerOnFirst
+      store.game_stats.home_score + 1
+      return "Its a single! One run scores!! Runner is safe at first!"
+    }
+  }
+    // all runners adv 2 spots//
+  const double = function doubles(basePositions){
+    let aDouble = 2
+    if (aDouble && basePositions === emptyBases){
+      basePositions = runnerOnSecond
+      return "Its a double! Safe at second!"
+    }else if (aDouble && basePositions === runnerOnFirst){
+      basePositions = runnersOnSecondAndThird
+      return "Its a double! Runners are safe at second and third!"
+    }else if (aDouble && basePositions === runnersOnFirstAndSecond || basePositions === runnersOnFirstAndThird){
+      basePositions = runnersOnSecondAndThird
+      store.game_stats.home_score + 1
+      return "Its a Double! One run scores!! Runners are safe at second and third!"
+    }else if (aDouble && basePositions === basesLoaded){
+      basePositions = runnersOnSecondAndThird
+      //if home team batting logic else will put score for the away team//
+      store.game_stats.home_score + 2
+      return "Its a double! Two runs score!! Runners are safe at second and third!"
+    }else if (aDouble && basePositions === runnersOnSecondAndThird){
+      basePositions = runnersOnFirstAndThird
+      store.game_stats.home_score + 1
+      return "Its a Double! One run scores!! Runners are safe at first and third!"
+    }else if (aDouble && basePositions === runnerOnSecond || basePositions === runnerOnThird){
+      basePositions = runnersOnFirstAndThird
+      store.game_stats.home_score + 1
+      return "Its a Double! One run scores! Runner is safe at Second!"
+    }
+  }
+    // all runners adv 3 spots//
+  const triple = function triples(basePositions){
+    let aTriple = 3
+    if (aTriple && basePositions === emptyBases){
+      basePositions = runnerOnThird
+      return "Its a Triple! Runner is safe at third!"
+    }else if (aTriple && basePositions === runnerOnFirst || basePositions === runnerOnSecond || basePositions === runnerOnThird){
+      basePositions = runnerOnThird
+      store.game_stats.home_score + 1
+      return "Its a Triple! One run scores! Runner is safe at third!"
+    }else if (aTriple && basePositions === runnersOnFirstAndSecond || basePositions === runnersOnFirstAndThird || basePositions === runnersOnSecondAndThird){
+      basePositions = basesLoaded
+      store.game_stats.home_score + 2
+      return "Its a Triple ! Two runs score!! Runner is safe at third!"
+    }else if (aTriple && basePositions === basesLoaded){
+      basePositions = basesLoaded
+      //if home team batting logic else will put score for the away team//
+      store.game_stats.home_score + 3
+      return "Its a base clearing triple! Three runs score!! Runner is safe at third!"
+    }
+  }
+
   const homerun = function homeruns(basePositions){}
   // tally truths in array + 1 = runs scored / reset bases
   const so = function strikeout(){}

@@ -35,14 +35,9 @@ document.addEventListener('DOMContentLoaded', function(){
     appBody.append(gamelogDiv, homeScoreDiv,
       awayScoreDiv, inningDetailsDiv, battersControlsContainer,
       pitchersControlsContainer)
-    //batter's controller events
-    bPower.addEventListener('click', powerHandler)
-    bHit.addEventListener('click', contactHandler)
-    //pitcher's controller events
-    pSpecial.addEventListener('click', spHandler)
-    pFastball.addEventListener('click', fbHandler)
   }
   //End main page containers/setup//
+
 
 
   //Now on a blank slate due to event of the Play Ball button - we recreate our page//
@@ -98,18 +93,24 @@ document.addEventListener('DOMContentLoaded', function(){
   //end//
 
 
-  //Our "Baseball Diamond" [false,false,false,false] 0 index being [1st Base]
+  //Our Code-Logic "Baseball Diamond" [false,false,false,false] 0 index being [1st Base]
   const basePositions = store.live_game.bases
   //will flip to true when theres a baserunner on that base//
   //when index 3 becomes true a run is scored//
   //Batter Hit Result Helper Functions - //
   //- to move baserunners and score runs logic //
-  const single = function singles(basePositions){} // all runners adv 1 spot
-  const double = function doubles(basePositions){} // all runners adv 2 spots
-  const triple = function triples(basePositions){} // all runners adv 3 spots
-  const homerun = function homeruns(basePositions){} // tally truths in array + 1 = runs scored / reset bases
-  const so = function strikeout(){} // +1 to outs
-  const bob = function walk (basePositions){} //runners only adv 1 if forced aka spot before is true
+  const single = function singles(basePositions){}
+  // all runners adv 1 spot
+  const double = function doubles(basePositions){}
+  // all runners adv 2 spots
+  const triple = function triples(basePositions){}
+  // all runners adv 3 spots
+  const homerun = function homeruns(basePositions){}
+  // tally truths in array + 1 = runs scored / reset bases
+  const so = function strikeout(){}
+  // +1 to outs
+  const bob = function walk (basePositions){}
+  //runners only adv 1 if forced aka spot before is true
   // const steal = function steals (basePositions){} -- stretch goal ( [2/5 chance success] )
   // const bunt = function bunts (basePositions){} -- stretch goal (runners auto adv 1 & bunter = out)
   // const hitBatter = function hitBatters (basePositions){} -- stretch goal
@@ -153,11 +154,20 @@ document.addEventListener('DOMContentLoaded', function(){
       case 4:
       store.live_game.outs += 1
       o.innerText = `Outs: ${store.live_game.outs}`
+      store.game_stats.out_count +=1
       alert(`Out ${store.live_game.outs}`)
       break;
     }
     console.log(store.live_game)
   }
+
+
+  //batter's controller events
+  bPower.addEventListener('click', powerHandler)
+  bHit.addEventListener('click', contactHandler)
+  //pitcher's controller events
+  pSpecial.addEventListener('click', spHandler)
+  pFastball.addEventListener('click', fbHandler)
   //Array for the current play in action//
   let currentPlay = []
   //THE HANFLERS FOR THE PITCHER & BATTER CONTROLLERS//
@@ -251,9 +261,10 @@ document.addEventListener('DOMContentLoaded', function(){
           break;
   }
 
-    console.log(outCount);
-    console.log(inning);
-    console.log(store.live_game.bases);
+    return inning
+    // console.log(outCount);
+    // console.log(inning);
+    // console.log(store.live_game.bases);
   }
 //end//
 

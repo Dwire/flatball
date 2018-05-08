@@ -56,11 +56,11 @@ document.addEventListener('DOMContentLoaded', function(){
   const inningDetailsDiv = document.createElement('div')
   inningDetailsDiv.setAttribute('id', 'inningDetailsDiv')
   let current_inning = inningCount()
-  inningDetailsDiv.innerHTML = `<ul><h1>Inning: ${current_inning} </h1></ul>
-  <li id="strikes">Strikes: ${store.live_game.strikes}</li>
-  <li id="balls">Balls: ${store.live_game.balls}</li>
-  <li id="fouls">Foul Balls: ${store.live_game.foul_balls}</li>
-  <li id="outs">Outs: ${store.live_game.outs}</li>`
+  inningDetailsDiv.innerHTML = `<div><h1 id="inning">Inning: ${current_inning} </h1></div>
+  <div id="strikes">Strikes: ${store.live_game.strikes}</div><br>
+  <div id="balls">Balls: ${store.live_game.balls}</div><br>
+  <div id="fouls">Foul Balls: ${store.live_game.foul_balls}</div><br>
+  <div id="outs">Outs: ${store.live_game.outs}</div>`
   //end//
 
 
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function(){
   // tally truths in array + 1 = runs scored / reset bases
   const so = function strikeout(){}
   // +1 to outs
-  const bob = function walk (basePositions){
+  function walk (basePositions){
     let BaseOnBalls = 1
     if (BaseOnBalls && basePositions === emptyBases){
       basePositions = runnerOnFirst
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function(){
       basePositions = basesLoaded
       store.game_stats.home_score + 1
       return console.log("The Pitcher has walked the batter, One run scores! The bases remain loaded!")
-    }else if (BaseOnBalls && basePositions === runnersOnThird){
+    }else if (BaseOnBalls && basePositions === runnerOnThird){
       basePositions = runnersOnFirstAndThird
       return console.log("The Pitcher has walked the batter, runners are now on first and third base!")
     }
@@ -238,10 +238,12 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
   function executePlay (){
-    randPlay = Math.floor(Math.random()*4) + 1
+    // randPlay = Math.floor(Math.random()*4) + 1
+    randPlay = 2
     // b = ball s = strike f = foul ball o = out //
-    const b = document.getElementById('balls')
+
     const s = document.getElementById('strikes')
+    const b = document.getElementById('balls')
     const f = document.getElementById('fouls')
     const o = document.getElementById('outs')
 
@@ -262,7 +264,7 @@ document.addEventListener('DOMContentLoaded', function(){
         store.live_game.balls += 1
         if (store.live_game.balls === 4){
           alert("WALK")
-          //walk()  ---------Call Joe's walk function
+          walk(basePositions)
           out(s,f,b,o)
         }else {
           displayStats(s,f,b,o)
@@ -291,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function out(s,f,b,o) {
     if (store.live_game.outs === 3) {
       alert('3 Outs SWITCH')
-      // NOTE: Change Inning
+      document.getElementById("inning").innerText = `Inning: ${(inningCount())}`
       store.live_game.strikes = 0
       store.live_game.foul_balls = 0
       store.live_game.balls = 0

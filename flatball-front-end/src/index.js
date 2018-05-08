@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function(){
   //when index 3 becomes true a run is scored//
   //Batter Hit Result Helper Functions - //
   //- to move baserunners and score runs logic //
-
+  //Basically asking "is runner on? [1st base, 2nd base, 3rd base, (home)scored]" //
   //Possible Base positions variables to make code more readable below//
   const emptyBases = [false,false,false,false]
   const runnerOnFirst = [true,false,false,false]
@@ -117,33 +117,33 @@ document.addEventListener('DOMContentLoaded', function(){
     let aSingle = 1
     if (asingle && basePositions === emptyBases){
       basePositions = runnerOnFirst
-      return "Its a single! Safe at first!"
+      return console.log("Its a single! Safe at first!")
     }else if (aSingle && basePositions === runnerOnFirst){
       basePositions = runnersOnFirstAndSecond
-      return "Its a single! Runners are safe at first and second!"
+      return console.log("Its a single! Runners are safe at first and second!")
     }else if (aSingle && basePositions === runnersOnFirstAndSecond){
       basePositions = basesLoaded
-      return "Its a single! The bases are now loaded!"
+      return console.log("Its a single! The bases are now loaded!")
     }else if (aSingle && basePositions === basesLoaded){
       basePositions = basesLoaded
       //if home team batting logic else will put score for the away team//
       store.game_stats.home_score + 1
-      return "Its a single! One run scores!! The bases remain loaded!"
+      return console.log("Its a single! One run scores!! The bases remain loaded!")
     }else if (aSingle && basePositions === runnersOnFirstAndThird){
       basePositions = runnersOnFirstAndSecond
       store.game_stats.home_score + 1
-      return "Its a single! One run scores!! Runners are safe at first and second!"
+      return console.log("Its a single! One run scores!! Runners are safe at first and second!")
     }else if (aSingle && basePositions === runnersOnSecondAndThird){
       basePositions = runnersOnFirstAndThird
       store.game_stats.home_score + 1
-      return "Its a single! One run scores!! Runners are safe at first and third!"
+      return console.log("Its a single! One run scores!! Runners are safe at first and third!")
     }else if (aSingle && basePositions === runnerOnSecond){
       basePositions = runnersOnFirstAndThird
-      return "Its a single! Runners are safe at first and third!"
+      return console.log("Its a single! Runners are safe at first and third!")
     }else if (aSingle && basePositions === runnersOnThird){
       basePositions = runnerOnFirst
       store.game_stats.home_score + 1
-      return "Its a single! One run scores!! Runner is safe at first!"
+      return console.log("Its a single! One run scores!! Runner is safe at first!")
     }
   }
     // all runners adv 2 spots//
@@ -151,27 +151,27 @@ document.addEventListener('DOMContentLoaded', function(){
     let aDouble = 2
     if (aDouble && basePositions === emptyBases){
       basePositions = runnerOnSecond
-      return "Its a double! Safe at second!"
+      return console.log("Its a double! Safe at second!")
     }else if (aDouble && basePositions === runnerOnFirst){
       basePositions = runnersOnSecondAndThird
-      return "Its a double! Runners are safe at second and third!"
+      return console.log("Its a double! Runners are safe at second and third!")
     }else if (aDouble && basePositions === runnersOnFirstAndSecond || basePositions === runnersOnFirstAndThird){
       basePositions = runnersOnSecondAndThird
       store.game_stats.home_score + 1
-      return "Its a Double! One run scores!! Runners are safe at second and third!"
+      return console.log("Its a Double! One run scores!! Runners are safe at second and third!")
     }else if (aDouble && basePositions === basesLoaded){
       basePositions = runnersOnSecondAndThird
       //if home team batting logic else will put score for the away team//
       store.game_stats.home_score + 2
-      return "Its a double! Two runs score!! Runners are safe at second and third!"
+      return console.log("Its a double! Two runs score!! Runners are safe at second and third!")
     }else if (aDouble && basePositions === runnersOnSecondAndThird){
       basePositions = runnersOnFirstAndThird
       store.game_stats.home_score + 1
-      return "Its a Double! One run scores!! Runners are safe at first and third!"
+      return console.log("Its a Double! One run scores!! Runners are safe at first and third!")
     }else if (aDouble && basePositions === runnerOnSecond || basePositions === runnerOnThird){
       basePositions = runnersOnFirstAndThird
       store.game_stats.home_score + 1
-      return "Its a Double! One run scores! Runner is safe at Second!"
+      return console.log("Its a Double! One run scores! Runner is safe at Second!")
     }
   }
     // all runners adv 3 spots//
@@ -179,20 +179,20 @@ document.addEventListener('DOMContentLoaded', function(){
     let aTriple = 3
     if (aTriple && basePositions === emptyBases){
       basePositions = runnerOnThird
-      return "Its a Triple! Runner is safe at third!"
+      return console.log("Its a Triple! Runner is safe at third!")
     }else if (aTriple && basePositions === runnerOnFirst || basePositions === runnerOnSecond || basePositions === runnerOnThird){
       basePositions = runnerOnThird
       store.game_stats.home_score + 1
-      return "Its a Triple! One run scores! Runner is safe at third!"
+      return console.log("Its a Triple! One run scores! Runner is safe at third!")
     }else if (aTriple && basePositions === runnersOnFirstAndSecond || basePositions === runnersOnFirstAndThird || basePositions === runnersOnSecondAndThird){
       basePositions = basesLoaded
       store.game_stats.home_score + 2
-      return "Its a Triple ! Two runs score!! Runner is safe at third!"
+      return console.log("Its a Triple ! Two runs score!! Runner is safe at third!")
     }else if (aTriple && basePositions === basesLoaded){
       basePositions = basesLoaded
       //if home team batting logic else will put score for the away team//
       store.game_stats.home_score + 3
-      return "Its a base clearing triple! Three runs score!! Runner is safe at third!"
+      return console.log("Its a base clearing triple! Three runs score!! Runner is safe at third!")
     }
   }
 
@@ -200,7 +200,26 @@ document.addEventListener('DOMContentLoaded', function(){
   // tally truths in array + 1 = runs scored / reset bases
   const so = function strikeout(){}
   // +1 to outs
-  const bob = function walk (basePositions){}
+  const bob = function walk (basePositions){
+    let BaseOnBalls = 1
+    if (BaseOnBalls && basePositions === emptyBases){
+      basePositions = runnerOnFirst
+      return console.log("The Pitcher has walked the batter, The Batter has gone to first base!")
+    }else if (BaseOnBalls && basePositions === runnerOnFirst || basePositions === runnerOnSecond){
+      basePositions = runnersOnFirstAndSecond
+      return console.log("The Pitcher has walked the batter, runners are now on first and second base!")
+    }else if (BaseOnBalls && basePositions === runnersOnFirstAndSecond || basePositions === runnersOnFirstAndThird || basePositions === runnersOnSecondAndThird){
+      basePositions = basesLoaded
+      return console.log("The Pitcher has walked the batter, bases are now loaded!")
+    }else if (BaseOnBalls && basePositions === basesLoaded){
+      basePositions = basesLoaded
+      store.game_stats.home_score + 1
+      return console.log("The Pitcher has walked the batter, One run scores! The bases remain loaded!")
+    }else if (BaseOnBalls && basePositions === runnersOnThird){
+      basePositions = runnersOnFirstAndThird
+      return console.log("The Pitcher has walked the batter, runners are now on first and third base!")
+    }
+  }
   //runners only adv 1 if forced aka spot before is true
   // const steal = function steals (basePositions){} -- stretch goal ( [2/5 chance success] )
   // const bunt = function bunts (basePositions){} -- stretch goal (runners auto adv 1 & bunter = out)

@@ -241,7 +241,13 @@ document.addEventListener('DOMContentLoaded', function(){
       break;
       case 2:
         store.live_game.balls += 1
-        b.innerText = `Balls: ${store.live_game.balls}`
+        if (store.live_game.balls === 4){
+          alert("WALK")
+          //walk()  ---------Call Joe's walk function
+          out(s,f,b,o)
+        }else {
+          displayStats(s,f,b,o)
+        }
         // alert(`Ball ${store.live_game.balls}`)
       break;
       case 3:
@@ -265,7 +271,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function out(s,f,b,o) {
     if (store.live_game.outs === 3) {
-
       alert('3 Outs SWITCH')
       // NOTE: Change Inning
       store.live_game.strikes = 0

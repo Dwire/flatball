@@ -68,208 +68,22 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 
-
-  //Our Code-Logic "Baseball Diamond" [false,false,false,false] 0 index being [1st Base]
-  //will flip to true when theres a baserunner on that base//
-  //when index 3 becomes true a run is scored//
-  //Batter Hit Result Helper Functions - //
-  //- to move baserunners and score runs logic //
-  //Basically asking "is runner on? [1st base, 2nd base, 3rd base, (home)scored]" //
-  //Possible Base positions variables to make code more readable below//
   const emptyBases = [0,0,0,0]
-  // const runnerOnFirst = [true,false,false,false]
-  // const runnerOnSecond = [false,true,false,false]
-  // const runnerOnThird = [false,false,true,false]
-  // const runnersOnFirstAndSecond = [true,true,false,false]
-  // const basesLoaded = [true,true,true,false]
-  // const runnersOnFirstAndThird = [true,false,true,false]
-  // const runnersOnSecondAndThird = [false,true,true,false]
-  //
-  // // const baseStatus = [1,1,1,1]
-  // //
-  // // function changeBaseStatus(num){
-  // //   num.forEach((c, i) => console.log(c, i))
-  // // }
-  //
-  //
-  //
-  // // all runners adv 1 spot //
-  // // Each if is a different base scenario in which//
-  // // a different result would occur on the bases//
-  // function single(){
-  //   let basePositions = store.live_game.bases
-  //   if (basePositions.equals(emptyBases)){
-  //     store.live_game.bases = runnerOnFirst
-  //     console.log("Its a single! Safe at first!")
-  //   }else if (basePositions.equals(runnerOnFirst)){
-  //     store.live_game.bases = runnersOnFirstAndSecond
-  //     console.log("Its a single! Runners are safe at first and second!")
-  //   }else if (basePositions.equals(runnersOnFirstAndSecond)){
-  //     store.live_game.bases = basesLoaded
-  //     console.log("Its a single! The bases are now loaded!")
-  //   }else if (basePositions.equals(basesLoaded)){
-  //      store.live_game.bases = basesLoaded
-  //     //if home team batting logic else will put score for the away team//
-  //     teamScore(1)
-  //     console.log("Its a single! One run scores!! The bases remain loaded!")
-  //   }else if (basePositions.equals(runnersOnFirstAndThird)){
-  //     store.live_game.bases = runnersOnFirstAndSecond
-  //     teamScore(1)
-  //     console.log("Its a single! One run scores!! Runners are safe at first and second!")
-  //   }else if (basePositions.equals(runnersOnSecondAndThird)){
-  //     store.live_game.bases = runnersOnFirstAndThird
-  //     teamScore(1)
-  //     console.log("Its a single! One run scores!! Runners are safe at first and third!")
-  //   }else if (basePositions.equals(runnerOnSecond)){
-  //     store.live_game.bases = runnersOnFirstAndThird
-  //     console.log("Its a single! Runners are safe at first and third!")
-  //   }else if (basePositions.equals(runnerOnThird)){
-  //     store.live_game.bases = runnerOnFirst
-  //     teamScore(1)
-  //     console.log("Its a single! One run scores!! Runner is safe at first!")
-  //   }
-  // }
-  //   // all runners adv 2 spots//
-  //   // Each if is a different base scenario in which//
-  //   // a different result would occur on the bases//
-  // function double(){
-  //   let basePositions = store.live_game.bases
-  //   if (basePositions.equals(emptyBases)){
-  //     store.live_game.bases = runnerOnSecond
-  //     console.log("Its a double! Safe at second!")
-  //   }else if (basePositions.equals(runnerOnFirst)){
-  //     store.live_game.bases = runnersOnSecondAndThird
-  //     console.log("Its a double! Runners are safe at second and third!")
-  //   }else if (basePositions.equals(runnersOnFirstAndSecond) || basePositions.equals(runnersOnFirstAndThird)){
-  //     store.live_game.bases = runnersOnSecondAndThird
-  //     teamScore(1)
-  //     console.log("Its a Double! One run scores!! Runners are safe at second and third!")
-  //   }else if (basePositions.equals(basesLoaded)){
-  //     store.live_game.bases = runnersOnSecondAndThird
-  //     //if home team batting logic else will put score for the away team//
-  //     teamScore(2)
-  //     console.log("Its a double! Two runs score!! Runners are safe at second and third!")
-  //   }else if (basePositions.equals(runnersOnSecondAndThird)){
-  //     store.live_game.bases = runnersOnFirstAndThird
-  //     teamScore(1)
-  //     console.log("Its a Double! One run scores!! Runners are safe at first and third!")
-  //   }else if (basePositions.equals(runnerOnSecond) || basePositions.equals(runnerOnThird)){
-  //     store.live_game.bases = runnerOnSecond
-  //     teamScore(1)
-  //     console.log("Its a Double! One run scores! Runner is safe at Second!")
-  //   }
-  // }
-  //   // all runners adv 3 spots//
-  //   // Each if is a different base scenario in which//
-  //   // a different result would occur on the bases//
-  // function triple(){
-  //   let basePositions = store.live_game.bases
-  //   if (basePositions.equals(emptyBases)){
-  //     store.live_game.bases = runnerOnThird
-  //     console.log("Its a Triple! Runner is safe at third!")
-  //   }else if (basePositions.equals(runnerOnFirst) || basePositions.equals(runnerOnSecond) || basePositions.equals(runnerOnThird)){
-  //     store.live_game.bases = runnerOnThird
-  //     teamScore(1)
-  //     console.log("Its a Triple! One run scores! Runner is safe at third!")
-  //   }else if (basePositions.equals(runnersOnFirstAndSecond) || basePositions.equals(runnersOnFirstAndThird) || basePositions.equals(runnersOnSecondAndThird)){
-  //     store.live_game.bases = basesLoaded
-  //     teamScore(2)
-  //     console.log("Its a Triple ! Two runs score!! Runner is safe at third!")
-  //   }else if (basePositions.equals(basesLoaded)){
-  //     store.live_game.bases = basesLoaded
-  //     //if home team batting logic else will put score for the away team//
-  //     teamScore(3)
-  //     console.log("Its a base clearing triple! Three runs score!! Runner is safe at third!")
-  //   }
-  // }
-  //
-  // function homerun(){
-  //   let basePositions = store.live_game.bases
-  //   console.log("HOMERUN");
-  //   //Vresets our live_game bases to being cleared ..since homerun//
-  //   if (basePositions.equals(emptyBases)){
-  //     teamScore(1)
-  //   }
-  //   else if (basePositions.equals(runnerOnFirst) ||
-  //       basePositions.equals(runnerOnSecond) ||
-  //       basePositions.equals(runnerOnThird)){
-  //     teamScore(2)
-  //   }
-  //   else if (basePositions.equals(runnersOnFirstAndThird) ||
-  //       basePositions.equals(runnersOnFirstAndSecond) ||
-  //       basePositions.equals(runnersOnSecondAndThird)){
-  //     teamScore(3)
-  //   }
-  //   else if(basePositions.equals(basesLoaded)){
-  //     teamScore(4)
-  //   }
-  //
-  //   store.live_game.bases = emptyBases
-  // }
 
-  //TESTING BRANCH REMOVED RETURN//
-  // tally truths in array + 1 = runs scored / reset bases
-  function walk (){
-    let basePositions = store.live_game.bases
-    if (basePositions.equals(emptyBases)){
-      store.live_game.bases = runnerOnFirst
-      console.log(basePositions);
-      console.log("The Pitcher has walked the batter, The Batter has gone to first base!")
-    }else if (basePositions.equals(runnerOnFirst) || basePositions.equals(runnerOnSecond)){
-      store.live_game.bases = runnersOnFirstAndSecond
-      console.log("The Pitcher has walked the batter, runners are now on first and second base!")
-    }else if (basePositions.equals(runnersOnFirstAndSecond) || basePositions.equals(runnersOnFirstAndThird) || basePositions.equals(runnersOnSecondAndThird)){
-      store.live_game.bases = basesLoaded
-      console.log("The Pitcher has walked the batter, bases are now loaded!")
-    }else if (basePositions.equals(basesLoaded)){
-      store.live_game.bases = basesLoaded
-      store.game_stats.home_score += 1
-      console.log("The Pitcher has walked the batter, One run scores! The bases remain loaded!")
-    }else if (basePositions.equals(runnerOnThird)){
-      store.live_game.bases = runnersOnFirstAndThird
-      return console.log("The Pitcher has walked the batter, runners are now on first and third base!")
-    }
+  var walk = function(){
+   var baseStatus = store.live_game.bases
+
+      for (var i = 0; i < baseStatus.length; i++){
+        debugger
+        if (baseStatus[i] === 1){
+          continue
+        }else{
+          baseStatus[i] = 1
+          break
+        }
+      }
+      cleanScore()
   }
-
-  // var baseRunning = (function(){
-  //  var baseStatus = store.live_game.bases
-  //  var score = 0
-  //  // var baseStatus = [1,1,1,0]
-  //
-  //   return function looper(numIn){
-  //     var num = numIn
-  //     for (var i = baseStatus.length -1; i >= 0; i--){
-  //       if (baseStatus[i] === 1){
-  //         score += 1
-  //         baseStatus[i] = baseStatus[i - 1]
-  //         baseStatus[i - 1] = 0
-  //       }else if(i === 0) {
-  //         break
-  //       }else{
-  //         baseStatus[i] = baseStatus[i - 1]
-  //         baseStatus[i - 1] = 0
-  //       }
-  //       // teamScore(score)
-  //     }
-  //
-  //     console.log(baseStatus)
-  //     console.log(score)
-  //     ///////////-------need this not to change
-  //
-  //     debugger
-  //       keepNum = num
-  //     num -= 1
-  //     if (num > 0){
-  //       baseRunning(num)
-  //     }else{
-  //       console.log(`bases = ${baseStatus} and Score = ${score}`);
-  //       store.live_game.bases = baseStatus
-  //       teamScore(score)
-  //       cleanScore(num)
-  //     }
-  //   }
-  //
-  // })()
 
   var baseRunning = function(outerNum){
    var baseStatus = store.live_game.bases
@@ -295,10 +109,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
       console.log(baseStatus)
       console.log(score)
-      ///////////-------need this not to change
 
-      // debugger
-      outNum
+      // outNum
       inNum -= 1
       if (inNum > 0){
         // baseRunning(inNum)
@@ -314,10 +126,12 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   function cleanScore(num) {
-    // debugger
-    store.live_game.bases.splice(num, 1, 1)
+    var lastInd = store.live_game.bases[3]
 
-    lastInd = store.live_game.bases[3]
+    if (num) {
+      store.live_game.bases.splice(num, 1, 1)
+    }
+
     if (lastInd === 1) {
       teamScore(lastInd)
       store.live_game.bases.splice(3, 1, 0)
@@ -325,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   function teamScore(num){
-    // debugger
     if(store.live_game.home){
       store.game_stats.home_score += num
       document.querySelector('#home-score').innerText = store.game_stats.home_score
@@ -335,28 +148,13 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     console.log(store.game_stats);
   }
-  //runners only adv 1 if forced aka spot before is true
-  // const steal = function steals (basePositions){} -- stretch goal ( [2/5 chance success] )
-  // const bunt = function bunts (basePositions){} -- stretch goal (runners auto adv 1 & bunter = out)
-  // const hitBatter = function hitBatters (basePositions){} -- stretch goal
-  //end//
-
-  //GameLog div will use these functions above ^ to call out and log random plays//
-  //and announce the game play by play to the screen as the players hit their controllers//
-  // can be p tags or an unordered list <-- head with innings (prefer this)//
-
-  //Can also use above functions to help with clearing on strikeouts and walks outs//
-  //still need to throw in logic that clears on outs and strikes and walks//
-  //for a new a batter//
-  // This function will generate a random play in the game //
-  // This function is utilized in controller-button handler functions below it//
 
 
   function executePlay (){
     randPlay = Math.floor(Math.random()*8) + 1
-    // randPlay = 7
-    // b = ball s = strike f = foul ball o = out //
+    // randPlay = 2
 
+    // b = ball s = strike f = foul ball o = out //
     const s = document.getElementById('strikes')
     const b = document.getElementById('balls')
     const f = document.getElementById('fouls')
@@ -460,6 +258,8 @@ document.addEventListener('DOMContentLoaded', function(){
     b.innerText = `Balls: ${store.live_game.balls}`
     o.innerText =`Outs: ${store.live_game.outs}`
   }
+
+
 
   //batter's controller events
   bPower.addEventListener('click', powerHandler)

@@ -188,6 +188,23 @@ transparent 20px);
   transform:rotate(-90deg);
 }
 
+#entire-scoreboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: -5px;
+  background-color: black;
+  color: #444;;
+}
+
+.box {
+  background-color: black;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
+
+
 .third {
   left:-.5vw;
   top:-.5vw;

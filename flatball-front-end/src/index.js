@@ -6,8 +6,7 @@ document.addEventListener('DOMContentLoaded', function(){
     new Game().render()
     appBody.innerHTML = ""
     alert('GAME ON')
-    appBody.append(fieldName, field, gamelogDiv,
-      inningDetailsDiv, battersControlsContainer,
+    appBody.append(fieldName, field, gamelogDiv, battersControlsContainer,
       pitchersControlsContainer)
   }
   //End main page containers/setup//
@@ -19,15 +18,11 @@ document.addEventListener('DOMContentLoaded', function(){
   gamelogDiv.setAttribute('id', 'gamelog')
   gamelogDiv.innerHTML = `<h1>Game Log</h1><div id="gamelog-scroll" style="height:100px;width:600px;overflow:auto;border:8px solid black;padding:2%;background-color:lightblue;color:black;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;"></div><br><br>`
 
-  const inningDetailsDiv = document.createElement('div')
-  inningDetailsDiv.setAttribute('id', 'inningDetailsDiv')
-  let current_inning = inningCount()
-  inningDetailsDiv.innerHTML = `<div><h1 id="inning">Inning: ${inningCount()} </h1></div>
-  <div id="strikes">Strikes: ${store.live_game.strikes}</div><br>
-  <div id="balls">Balls: ${store.live_game.balls}</div><br>
-  <div id="fouls">Foul Balls: ${store.live_game.foul_balls}</div><br>
-  <div id="outs">Outs: ${store.live_game.outs}</div>`
-  //end//
+  // const inningDetailsDiv = document.createElement('div')
+  // inningDetailsDiv.setAttribute('id', 'inningDetailsDiv')
+  // let current_inning = inningCount()
+  // inningDetailsDiv.innerHTML = `<div><h1 id="inning">Inning: ${inningCount()} </h1></div>
+
 
 
 

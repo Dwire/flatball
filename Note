@@ -38,10 +38,97 @@
 //
 // })()
 
+-----------------------------Print PLay By PLay--------------------------
+
+      // case 6:
+      //   double()
+      //   pByp = document.createElement('i')
+      //   pByp.innerHTML = "<hr>New Batter Up<br><br>"
+      //   gamelogScroll.append(pByp)
+      //   out(s,f,b,o)
+      // break;
+      // case 7:
+      //   triple()
+      //   pByp = document.createElement('i')
+      //   pByp.innerHTML = "<hr>New Batter Up<br>"
+      //   gamelogScroll.append(pByp)
+      //   out(s,f,b,o)
+      // break;
+      // case 8:
+      //   homerun()
+      //   pByp = document.createElement('i')
+      //   pByp.innerHTML = "<hr>New Batter Up<br>"
+      //   gamelogScroll.append(pByp)
+      //   out(s,f,b,o)
+      // break;
+      // case 9:
+      // pByp = document.createElement('i')
+      // pByp.innerHTML = "A line drive straight to the 2nd Baseman's mitt - 1 out recorded; New Batter up<hr><br>"
+      // gamelogScroll.append(pByp)
+      //   store.live_game.outs += 1
+      //   store.game_stats.out_count +=1
+      //   out(s,f,b,o)
+      // break;
+      // case 10:
+      // pByp = document.createElement('i')
+      // pByp.innerHTML = "A deep fly to warning track but caught by the OF - 1 out recorded; New Batter up<hr><br>"
+      // gamelogScroll.append(pByp)
+      //   store.live_game.outs += 1
+      //   store.game_stats.out_count +=1
+      //   out(s,f,b,o)
+      // break;
+      // case 11:
+      //   store.live_game.balls += 1
+      //   if (store.live_game.balls === 4){
+      //     alert("WALK")
+      //     walk()
+      //     out(s,f,b,o)
+      //   }else {
+      //     displayStats(s,f,b,o)
+      //   }
+      //   // alert(`Ball ${store.live_game.balls}`)
+      // break;
+      // case 12:
+      //   store.live_game.strikes += 1
+      //   if (store.live_game.strikes === 3) {
+      //     pByp = document.createElement('i')
+      //     pByp.innerHTML = "<hr>Batter left completely looking at strike 3... Batter is out! - 1 out recorded; New Batter up<hr><br>"
+      //     gamelogScroll.append(pByp)
+      //     alert('Strike Out')
+      //     store.live_game.outs += 1
+      //     out(s,f,b,o)
+      //   }else{
+      //     s.innerText =`Strikes: ${store.live_game.strikes}`
+      //     // alert(`Strike ${store.live_game.strikes}`)
+      //   }
+      // break;
+      // case 13:
+      //   store.live_game.foul_balls += 1
+      //   pByp = document.createElement('i')
+      //   pByp.innerHTML = "This ball is headed down line and its going, going... Foul Ball!<br><br>"
+      //   gamelogScroll.append(pByp)
+      //   if (store.live_game.strikes < 2){
+      //     store.live_game.strikes += 1
+      //     displayStats(s,f,b,o)
+      //   }else{
+      //     displayStats(s,f,b,o)
+      //   }
+      // // alert(`Foul Ball! That's Strike ${store.live_game.strikes}`)
+      // break;
+      // case 14:
+      //   store.live_game.balls += 1
+      //   if (store.live_game.balls === 4){
+      //     alert("WALK")
+      //     walk()
+      //     out(s,f,b,o)
+      //   }else {
+      //     displayStats(s,f,b,o)
+      //   }
+      //   // alert(`Ball ${store.live_game.balls}`)
+      // break;
 
 
 -------------------------------Stretch Goal-------------------------------------
-//runners only adv 1 if forced aka spot before is true
 // const steal = function steals (basePositions){} -- stretch goal ( [2/5 chance success] )
 // const bunt = function bunts (basePositions){} -- stretch goal (runners auto adv 1 & bunter = out)
 // const hitBatter = function hitBatters (basePositions){} -- stretch goal

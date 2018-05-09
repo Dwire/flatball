@@ -6,26 +6,25 @@ document.addEventListener('DOMContentLoaded', function(){
     new Game().render()
     appBody.innerHTML = ""
     alert('GAME ON')
-    appBody.append(gamelogDiv, homeScoreDiv,
+    appBody.append(fieldName, field, gamelogDiv, homeScoreDiv,
       awayScoreDiv, inningDetailsDiv, battersControlsContainer,
       pitchersControlsContainer)
   }
   //End main page containers/setup//
 
 
-
   //Now on a blank slate due to event of the Play Ball button - we recreate our page//
   //Main Game Simulator Page (Game Board) - Containers/Set-up Constants//
   const gamelogDiv = document.createElement('div')
   gamelogDiv.setAttribute('id', 'gamelog')
-  gamelogDiv.innerHTML = `<h1>Game Log</h1>`
+  gamelogDiv.innerHTML = `<h1>Game Log</h1><div id="gamelog-scroll" style="height:100px;width:600px;overflow:auto;border:8px solid black;padding:2%;background-color:lightblue;color:black;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;"></div><br><br>`
   const homeScoreDiv = document.createElement('div')
   homeScoreDiv.setAttribute('id', 'home-score-div')
-  homeScoreDiv.innerHTML = `<h1>Home Score</h1><br>
+  homeScoreDiv.innerHTML = `<h1>Home Score</h1>
   <p id="home-score">${store.game_stats.home_score}</p>`
   const awayScoreDiv = document.createElement('div')
   awayScoreDiv.setAttribute('id', 'away-score-div')
-  awayScoreDiv.innerHTML = `<h1>Away Score: </h1><br>
+  awayScoreDiv.innerHTML = `<h1>Away Score: </h1>
   <p id=away-score>${store.game_stats.away_score}</p>`
   const inningDetailsDiv = document.createElement('div')
   inningDetailsDiv.setAttribute('id', 'inningDetailsDiv')
@@ -43,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function(){
   //Batter Controls//
   const battersControlsContainer = document.createElement('div')
   battersControlsContainer.setAttribute('id', 'batter-controls')
-  battersControlsContainer.innerHTML = `<h2>Batter's Controller [will say user 1]</h2>`
+  battersControlsContainer.innerHTML = `<h2>Batter's Controller</h2>`
   const bPower = document.createElement('button')
   bPower.setAttribute('id', 'power-hit')
   bPower.innerText = 'Power Hit'
@@ -56,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function(){
   //Pitching Controls//
   const pitchersControlsContainer = document.createElement('div')
   pitchersControlsContainer.setAttribute('id', 'pitcher-controls')
-  pitchersControlsContainer.innerHTML = `<h2>Pitcher's Controller [will say Guest/User2]</h2>`
+  pitchersControlsContainer.innerHTML = `<h2>Pitcher's Controller</h2>`
   const pFastball = document.createElement('button')
   pFastball.setAttribute('id', 'fastball')
   pFastball.innerText = 'Fastball'
@@ -74,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function(){
    var baseStatus = store.live_game.bases
 
       for (var i = 0; i < baseStatus.length; i++){
-        debugger
         if (baseStatus[i] === 1){
           continue
         }else{
@@ -110,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function(){
       console.log(baseStatus)
       console.log(score)
 
-      // outNum
+      outNum
       inNum -= 1
       if (inNum > 0){
         // baseRunning(inNum)
@@ -127,17 +125,14 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function cleanScore(num) {
     var lastInd = store.live_game.bases[3]
-
-    if (num) {
-      store.live_game.bases.splice(num, 1, 1)
-    }
+    store.live_game.bases.splice(num, 1, 1)
 
     if (lastInd === 1) {
       teamScore(lastInd)
       store.live_game.bases.splice(3, 1, 0)
     }
   }
-
+  //helper function used to add score and update our scoreboard live to the correct team//
   function teamScore(num){
     if(store.live_game.home){
       store.game_stats.home_score += num
@@ -150,19 +145,25 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
 
+
+
+  //REFACTOR OR PULL OUT IN VARIABLES - REPITIVE CODE //
+  //function runs a random play when both buttons are clicked once//
+  //added multiple outs and strikes/balls to raise the likilihood of them occuring over hits//
   function executePlay (){
-    randPlay = Math.floor(Math.random()*8) + 1
-    // randPlay = 2
+    // randPlay = Math.floor(Math.random()*15) + 1
+    randPlay = 3
 
     // b = ball s = strike f = foul ball o = out //
     const s = document.getElementById('strikes')
     const b = document.getElementById('balls')
     const f = document.getElementById('fouls')
     const o = document.getElementById('outs')
-
+    const gamelogScroll = document.getElementById('gamelog-scroll')
 
     switch (randPlay) {
       case 1:
+      case 2:
         store.live_game.strikes += 1
         if (store.live_game.strikes === 3) {
           alert('Strike Out')
@@ -173,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function(){
           // alert(`Strike ${store.live_game.strikes}`)
         }
       break;
-      case 2:
+      case 3:
         store.live_game.balls += 1
         if (store.live_game.balls === 4){
           alert("WALK")
@@ -184,8 +185,12 @@ document.addEventListener('DOMContentLoaded', function(){
         }
         // alert(`Ball ${store.live_game.balls}`)
       break;
-      case 3:
+      case 4:
+      case 5:
         store.live_game.foul_balls += 1
+        pByp = document.createElement('i')
+        pByp.innerHTML = "Tipped off behind to the backstop, Foul Ball!<br><br>"
+        gamelogScroll.append(pByp)
         if (store.live_game.strikes < 2){
           store.live_game.strikes += 1
           displayStats(s,f,b,o)
@@ -194,40 +199,58 @@ document.addEventListener('DOMContentLoaded', function(){
         }
       // alert(`Foul Ball! That's Strike ${store.live_game.strikes}`)
       break;
-      case 4:
+      case 6:
+      case 7:
         store.live_game.outs += 1
         store.game_stats.out_count +=1
-        out(s,f,b,o)
-      break;
-      case 5:
-        baseRunning(1)(1)
-        console.log("Hit single");
-        out(s,f,b,o)
-      break;
-      case 6:
-        baseRunning(2)(2)
-        console.log('hit double');
-        out(s,f,b,o)
-      break;
-      case 7:
-        baseRunning(3)(3)
-        console.log('hit triple');
+        pByp = document.createElement('i')
+        pByp.innerHTML = "A dribbling groundball to SS, runner out at first - 1 out recorded; New Batter up<hr><br>"
+        gamelogScroll.append(pByp)
         out(s,f,b,o)
       break;
       case 8:
-        baseRunning(4)(4)
-        console.log('hit homerun');
+      case 9:
+      case 10:
+        baseRunning(1)(1)
+        console.log("Hit single")
         out(s,f,b,o)
       break;
+      case 11:
+      case 12:
+        baseRunning(2)(2)
+        console.log('hit double')
+        out(s,f,b,o)
+      break;
+      case 13:
+      case 14:
+        baseRunning(3)(3)
 
-
+        console.log('hit triple')
+        out(s,f,b,o)
+      break;
+      case 15:
+        baseRunning(4)(4)
+        console.log('hit homerun')
+        out(s,f,b,o)
+      break;
     }
     console.log(store.live_game)
   }
 
+
+
+  //-------------end CASE STATEMENT ------------------//
+
+
+// --------Core functionality to --> display and resetting scoreboard-----//
+//------------balls/strikes/change of inning/controls------//
   function out(s,f,b,o) {
+    let gamelogScroll = document.getElementById('gamelog-scroll')
     if (store.live_game.outs === 3) {
-      alert('3 Outs SWITCH')
+      pByp = document.createElement('i')
+      pByp.innerHTML = "<hr>Final Out of The Inning Recorded - Switch Controls<hr><br><br>"
+      gamelogScroll.append(pByp)
+      alert('3 Outs SWITCH Controllers')
       document.getElementById("inning").innerText = `Inning: ${inningCount()}`
       store.live_game.bases = emptyBases
 
@@ -236,6 +259,7 @@ document.addEventListener('DOMContentLoaded', function(){
       }else{
         store.live_game.home = true
       }
+
 
       store.live_game.strikes = 0
       store.live_game.foul_balls = 0
@@ -258,6 +282,7 @@ document.addEventListener('DOMContentLoaded', function(){
     b.innerText = `Balls: ${store.live_game.balls}`
     o.innerText =`Outs: ${store.live_game.outs}`
   }
+  // end --- display and reseting balls/strikes/change of inning/controls---//
 
 
 
@@ -271,8 +296,7 @@ document.addEventListener('DOMContentLoaded', function(){
   let currentPlay = []
   //THE HANFLERS FOR THE PITCHER & BATTER CONTROLLERS//
   //Handler for the Batter's Contact Hit//
-
-  function contactHandler (){
+  function contactHandler() {
     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
       alert(`You can't hit until the Pitcher selects their pitch`)
     }else{
@@ -283,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   }
   //Handler for the Batter's Power Hit
-  function powerHandler (){
+  function powerHandler() {
     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
       alert(`You can't hit until the Pitcher selects their pitch`)
     }else{
@@ -294,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   }
   //Handler for the Pitcher's FastBall Pitch
-  function fbHandler (){
+  function fbHandler() {
     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
       alert('You already have your pitch selected, waiting for the Batter to swing')
     }else{
@@ -305,7 +329,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   }
   //Handler for the Pitcher's Special Pitch
-  function spHandler(){
+  function spHandler() {
     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
       alert('You already have your pitch selected, waiting for the Batter to swing')
     }else{
@@ -318,13 +342,8 @@ document.addEventListener('DOMContentLoaded', function(){
   //end//
 
 
-
-
-//How to fix inning just make it a div instead of a ul
-//and then just make the list items p tags/divs...//
-//this needs to be worked on produces Undefined currently//
-//on the right track with it though//
-  function inningCount(){
+//---Inning function to track and count what inning it is using cases---//
+  function inningCount() {
     let outCount = store.game_stats.out_count
     // let outCount = 9
     let inning = ""
@@ -361,17 +380,54 @@ document.addEventListener('DOMContentLoaded', function(){
           inning = "Bottom of the Third";
           break;
   }
-
     return inning
-    // console.log(outCount);
-    // console.log(inning);
-    // console.log(store.live_game.bases);
   }
-//end//
+//-------------end Inning Counter/Tracker--------------//
 
 
+//---------------Baseball Field ----------------------------//
+  fieldName = document.createElement('h1')
+  fieldName.innerText = "Coders Field"
+  field = document.createElement('div')
+  field.setAttribute('class', 'perspective')
+  field.innerHTML = `
+    <br>
+    <br>
+    <hr>
+    <div id="stripes" class="field">
+      <div class="field-inner">
+  </div>
+  <div class="right-field-line">
+  </div>
+  <div class="left-field-line">
+  </div>
+  <div class="infield">
+    <div class="infield-inner">
+      <span class="home">
+        <span class="plate">
+        </span>
+      </span>
+      <span class="first">
+      </span>
+      <span class="second">
+      </span>
+      <span class="third">
+      </span>
+      <div class="pitchers-mound">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<hr>
+<br>
+<br>`
+// -------------------end-------------------------//
 
-//--------------------------Array Helper---------------------------------
+
+//--------------------------Array Helper---------------------------------//\
+//This Array helper allows to make comparing Easy on the eyes in our functions//
+//Unlike Ruby, Javscript does not make it simple to compare arrays to eachother//
 // Warn if overriding existing method
   if(Array.prototype.equals)
       console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");

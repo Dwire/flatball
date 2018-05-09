@@ -220,6 +220,22 @@ transparent 20px);
   justify-self: center;
 }
 
+#away{
+  border:8px solid lightblue;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left:10px;
+  margin-right:10px;
+}
+
+#home{
+  border:8px solid lightblue;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left:10px;
+  margin-right:10px;
+}
+
 #gamelog-scroll{
   height:100px;
   width:600px;
@@ -232,6 +248,22 @@ transparent 20px);
   font-family:sans-serif;
   padding:10px;
 }
+
+
+#gamelog{
+  margin-right: auto;
+  margin-left: auto;
+  width: 800px;
+}
+
+.box p{
+  margin: -5px;
+}
+
+#inning{
+  border-bottom: 2px solid white;
+}
+
 button {
   width: -webkit-fill-available;
 }

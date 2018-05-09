@@ -1,5 +1,6 @@
 //---------------Baseball Field ----------------------------//
   fieldName = document.createElement('h1')
+  fieldName.setAttribute('id', 'field-name')
   fieldName.innerText = "Coders Field"
   field = document.createElement('div')
   field.setAttribute('class', 'perspective')
@@ -13,11 +14,10 @@
         <div class="box 1"id="home"> <h1> Home Score: <h2 id="home-score">${store.game_stats.home_score}</h2></h1></div>
 
         <div class="box 2" id="scoreboard-inningDeets-container">
-          <div><h3 id="inning">Inning: ${inningCount()} </h3></div>
-          <div id="strikes">Strikes: ${store.live_game.strikes}</div><br>
-          <div id="balls">Balls: ${store.live_game.balls}</div><br>
-          <div id="fouls">Foul Balls: ${store.live_game.foul_balls}</div><br>
-          <div id="outs">Outs: ${store.live_game.outs}</div>
+          <h3 id="inning">${inningCount()} </h3>
+          <p id="strikes">Strikes: ${store.live_game.strikes}</p><br>
+          <p id="balls">Balls: ${store.live_game.balls}</p><br>
+          <p id="outs">Outs: ${store.live_game.outs}</p>
         </div>
 
         <div class="box 3"id="away"> <h1> Away Score: <h2 id="away-score">${store.game_stats.away_score}</h2></h1></div>
@@ -100,32 +100,32 @@ function inningCount() {
     case 0:
     case 1:
     case 2:
-        inning = "Top of the First";
+        inning = "Top 1st";
         break;
     case 3:
     case 4:
     case 5:
-        inning = "Bottom of the First";
+        inning = "Bottom 1st";
         break;
     case 6:
     case 7:
     case 8:
-        inning = "Top of the Second";
+        inning = "Top 2nd";
         break;
     case 9:
     case 10:
     case 11:
-        inning = "Bottom of the Second";
+        inning = "Bottom 2nd";
         break;
     case 12:
     case 13:
     case 14:
-        inning = "Top of the Third";
+        inning = "Top 3rd";
         break;
     case 15:
     case 16:
     case 17:
-        inning = "Bottom of the Third";
+        inning = "Bottom 3rd";
         break;
 }
   return inning

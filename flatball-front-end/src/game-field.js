@@ -13,7 +13,7 @@
         <div class="box 1"id="home"> <h1> Home Score: <h2 id="home-score">${store.game_stats.home_score}</h2></h1></div>
 
         <div class="box 2" id="scoreboard-inningDeets-container">
-          <div><h1 id="inning">Inning: ${inningCount()} </h1></div>
+          <div><h3 id="inning">Inning: ${inningCount()} </h3></div>
           <div id="strikes">Strikes: ${store.live_game.strikes}</div><br>
           <div id="balls">Balls: ${store.live_game.balls}</div><br>
           <div id="fouls">Foul Balls: ${store.live_game.foul_balls}</div><br>
@@ -51,6 +51,45 @@
 <hr>
 <br>
 <br>`
+
+
+//Batter Controls//
+const battersControlsContainer = document.createElement('div')
+battersControlsContainer.setAttribute('class', 'controller')
+battersControlsContainer.innerHTML = `<h4>Batter's Controller</h4>`
+const bPower = document.createElement('button')
+bPower.setAttribute('id', 'power-hit')
+bPower.innerText = 'Power Hit'
+const bHit = document.createElement('button')
+bHit.setAttribute('id', 'contact-hit')
+bHit.innerText = 'Hit for Contact'
+battersControlsContainer.append(bPower, bHit)
+
+//end//
+
+//Pitching Controls//
+const pitchersControlsContainer = document.createElement('div')
+pitchersControlsContainer.setAttribute('class', 'controller')
+pitchersControlsContainer.innerHTML = `<h4>Pitcher's Controller</h4>`
+const pFastball = document.createElement('button')
+pFastball.setAttribute('id', 'fastball')
+pFastball.innerText = 'Fastball'
+const pSpecial = document.createElement('button')
+pSpecial.setAttribute('id', 'special-pitch')
+pSpecial.innerText = 'Special Pitch'
+pitchersControlsContainer.append(pFastball, pSpecial)
+
+
+bothControllers = document.createElement('div')
+bothControllers.setAttribute('id', 'both-controllers')
+bothControllers.append(pitchersControlsContainer)
+bothControllers.append(battersControlsContainer)
+
+field.append(bothControllers)
+//end//
+
+
+
 // -------------------end-------------------------//
 function inningCount() {
   let outCount = store.game_stats.out_count

@@ -6,8 +6,7 @@ document.addEventListener('DOMContentLoaded', function(){
     new Game().render()
     appBody.innerHTML = ""
     alert('GAME ON')
-    appBody.append(fieldName, field, gamelogDiv, battersControlsContainer,
-      pitchersControlsContainer)
+    appBody.append(fieldName, field, gamelogDiv)
   }
   //End main page containers/setup//
 
@@ -16,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function(){
   //Main Game Simulator Page (Game Board) - Containers/Set-up Constants//
   const gamelogDiv = document.createElement('div')
   gamelogDiv.setAttribute('id', 'gamelog')
-  gamelogDiv.innerHTML = `<h1>Game Log</h1><div id="gamelog-scroll" style="height:100px;width:600px;overflow:auto;border:8px solid black;padding:2%;background-color:lightblue;color:black;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;"></div><br><br>`
+  gamelogDiv.innerHTML = `<h1>Game Log</h1><div id="gamelog-scroll"></div><br><br>`
 
   // const inningDetailsDiv = document.createElement('div')
   // inningDetailsDiv.setAttribute('id', 'inningDetailsDiv')
@@ -27,31 +26,31 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 //Game Simulation Controllers[Buttons]//
-  //Batter Controls//
-  const battersControlsContainer = document.createElement('div')
-  battersControlsContainer.setAttribute('id', 'batter-controls')
-  battersControlsContainer.innerHTML = `<h2>Batter's Controller</h2>`
-  const bPower = document.createElement('button')
-  bPower.setAttribute('id', 'power-hit')
-  bPower.innerText = 'Power Hit'
-  const bHit = document.createElement('button')
-  bHit.setAttribute('id', 'contact-hit')
-  bHit.innerText = 'Hit for Contact'
-  battersControlsContainer.append(bHit,"||",bPower)
-  //end//
-
-  //Pitching Controls//
-  const pitchersControlsContainer = document.createElement('div')
-  pitchersControlsContainer.setAttribute('id', 'pitcher-controls')
-  pitchersControlsContainer.innerHTML = `<h2>Pitcher's Controller</h2>`
-  const pFastball = document.createElement('button')
-  pFastball.setAttribute('id', 'fastball')
-  pFastball.innerText = 'Fastball'
-  const pSpecial = document.createElement('button')
-  pSpecial.setAttribute('id', 'special-pitch')
-  pSpecial.innerText = 'Special Pitch'
-  pitchersControlsContainer.append(pFastball,"||",pSpecial)
-  //end//
+  // //Batter Controls//
+  // const battersControlsContainer = document.createElement('div')
+  // battersControlsContainer.setAttribute('id', 'batter-controls')
+  // battersControlsContainer.innerHTML = `<h2>Batter's Controller</h2>`
+  // const bPower = document.createElement('button')
+  // bPower.setAttribute('id', 'power-hit')
+  // bPower.innerText = 'Power Hit'
+  // const bHit = document.createElement('button')
+  // bHit.setAttribute('id', 'contact-hit')
+  // bHit.innerText = 'Hit for Contact'
+  // battersControlsContainer.append(bHit,"||",bPower)
+  // //end//
+  //
+  // //Pitching Controls//
+  // const pitchersControlsContainer = document.createElement('div')
+  // pitchersControlsContainer.setAttribute('id', 'pitcher-controls')
+  // pitchersControlsContainer.innerHTML = `<h2>Pitcher's Controller</h2>`
+  // const pFastball = document.createElement('button')
+  // pFastball.setAttribute('id', 'fastball')
+  // pFastball.innerText = 'Fastball'
+  // const pSpecial = document.createElement('button')
+  // pSpecial.setAttribute('id', 'special-pitch')
+  // pSpecial.innerText = 'Special Pitch'
+  // pitchersControlsContainer.append(pFastball,"||",pSpecial)
+  // //end//
 
 
   //batter's controller events

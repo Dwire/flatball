@@ -191,7 +191,7 @@ transparent 20px);
 #entire-scoreboard {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: -5px;
+  grid-gap: 0px;
   background-color: black;
   color: #444;;
 }
@@ -202,6 +202,34 @@ transparent 20px);
   border-radius: 5px;
   padding: 20px;
   font-size: 150%;
+}
+#both-controllers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0px;
+  background-color: black;
+  color: #444;
+}
+
+.controller {
+  background-color: black;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
+
+#gamelog-scroll{
+  height:100px;
+  width:600px;
+  overflow:auto;
+  border:8px solid black;
+  padding:2%;
+  background-color:lightblue;
+  color:black;
+  scrollbar-base-color:gold;
+  font-family:sans-serif;
+  padding:10px;
 }
 
 

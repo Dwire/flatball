@@ -18,14 +18,7 @@ document.addEventListener('DOMContentLoaded', function(){
   const gamelogDiv = document.createElement('div')
   gamelogDiv.setAttribute('id', 'gamelog')
   gamelogDiv.innerHTML = `<h1>Game Log</h1><div id="gamelog-scroll" style="height:100px;width:600px;overflow:auto;border:8px solid black;padding:2%;background-color:lightblue;color:black;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;"></div><br><br>`
-  // const homeScoreDiv = document.createElement('div')
-  // homeScoreDiv.setAttribute('id', 'home-score-div')
-  // homeScoreDiv.innerHTML = `<h1>Home Score</h1>
-  // <p id="home-score">${store.game_stats.home_score}</p>`
-  // const awayScoreDiv = document.createElement('div')
-  // awayScoreDiv.setAttribute('id', 'away-score-div')
-  // awayScoreDiv.innerHTML = `<h1>Away Score: </h1>
-  // <p id=away-score>${store.game_stats.away_score}</p>`
+
   const inningDetailsDiv = document.createElement('div')
   inningDetailsDiv.setAttribute('id', 'inningDetailsDiv')
   let current_inning = inningCount()
@@ -63,6 +56,62 @@ document.addEventListener('DOMContentLoaded', function(){
   pSpecial.setAttribute('id', 'special-pitch')
   pSpecial.innerText = 'Special Pitch'
   pitchersControlsContainer.append(pFastball,"||",pSpecial)
+  //end//
+
+
+  //batter's controller events
+  bPower.addEventListener('click', powerHandler)
+  bHit.addEventListener('click', contactHandler)
+  //pitcher's controller events
+  pSpecial.addEventListener('click', spHandler)
+  pFastball.addEventListener('click', fbHandler)
+  //Array for the current play in action//
+  let currentPlay = []
+  //THE HANFLERS FOR THE PITCHER & BATTER CONTROLLERS//
+  //Handler for the Batter's Contact Hit//
+  function contactHandler() {
+    if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
+      alert(`You can't hit until the Pitcher selects their pitch`)
+    }else{
+      currentPlay.push({bat: "contact"})
+    }if (currentPlay.length === 2){
+      executePlay()
+      currentPlay = []
+    }
+  }
+  //Handler for the Batter's Power Hit
+  function powerHandler() {
+    if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
+      alert(`You can't hit until the Pitcher selects their pitch`)
+    }else{
+      currentPlay.push({bat: "power"})
+    }if (currentPlay.length === 2){
+      executePlay()
+      currentPlay = []
+    }
+  }
+  //Handler for the Pitcher's FastBall Pitch
+  function fbHandler() {
+    if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
+      alert('You already have your pitch selected, waiting for the Batter to swing')
+    }else{
+      currentPlay.push({pitch: "fastball"})
+    }if (currentPlay.length === 2){
+      executePlay()
+      currentPlay = []
+    }
+  }
+  //Handler for the Pitcher's Special Pitch
+  function spHandler() {
+    if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
+      alert('You already have your pitch selected, waiting for the Batter to swing')
+    }else{
+      currentPlay.push({pitch: "sp"})
+    }if (currentPlay.length === 2){
+      executePlay()
+      currentPlay = []
+    }
+  }
   //end//
 
 
@@ -114,8 +163,8 @@ document.addEventListener('DOMContentLoaded', function(){
         // baseRunning(inNum)
         looper(inNum)
       }else{
-        console.log(`bases = ${baseStatus} and Score = ${score}`);
         store.live_game.bases = baseStatus
+        console.log(`bases = ${baseStatus} and Score = ${score}`);
         teamScore(score)
         cleanScore(outNum)
       }
@@ -124,8 +173,8 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   function cleanScore(num) {
-    var lastInd = store.live_game.bases[3]
     store.live_game.bases.splice(num, 1, 1)
+    var lastInd = store.live_game.bases[3]
 
     if (lastInd === 1) {
       teamScore(lastInd)
@@ -289,62 +338,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 
-  //batter's controller events
-  bPower.addEventListener('click', powerHandler)
-  bHit.addEventListener('click', contactHandler)
-  //pitcher's controller events
-  pSpecial.addEventListener('click', spHandler)
-  pFastball.addEventListener('click', fbHandler)
-  //Array for the current play in action//
-  let currentPlay = []
-  //THE HANFLERS FOR THE PITCHER & BATTER CONTROLLERS//
-  //Handler for the Batter's Contact Hit//
-  function contactHandler() {
-    if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
-      alert(`You can't hit until the Pitcher selects their pitch`)
-    }else{
-      currentPlay.push({bat: "contact"})
-    }if (currentPlay.length === 2){
-      executePlay()
-      currentPlay = []
-    }
-  }
-  //Handler for the Batter's Power Hit
-  function powerHandler() {
-    if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
-      alert(`You can't hit until the Pitcher selects their pitch`)
-    }else{
-      currentPlay.push({bat: "power"})
-    }if (currentPlay.length === 2){
-      executePlay()
-      currentPlay = []
-    }
-  }
-  //Handler for the Pitcher's FastBall Pitch
-  function fbHandler() {
-    if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
-      alert('You already have your pitch selected, waiting for the Batter to swing')
-    }else{
-      currentPlay.push({pitch: "fastball"})
-    }if (currentPlay.length === 2){
-      executePlay()
-      currentPlay = []
-    }
-  }
-  //Handler for the Pitcher's Special Pitch
-  function spHandler() {
-    if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
-      alert('You already have your pitch selected, waiting for the Batter to swing')
-    }else{
-      currentPlay.push({pitch: "sp"})
-    }if (currentPlay.length === 2){
-      executePlay()
-      currentPlay = []
-    }
-  }
-  //end//
-
-
 //---Inning function to track and count what inning it is using cases---//
   function inningCount() {
     let outCount = store.game_stats.out_count
@@ -385,94 +378,5 @@ document.addEventListener('DOMContentLoaded', function(){
   }
     return inning
   }
-//-------------end Inning Counter/Tracker--------------//
-
-
-//---------------Baseball Field ----------------------------//
-  fieldName = document.createElement('h1')
-  fieldName.innerText = "Coders Field"
-  field = document.createElement('div')
-  field.setAttribute('class', 'perspective')
-  field.innerHTML = `
-    <br>
-    <br>
-    <hr>
-    <div class="perspective">
-      <div id="entire-scoreboard">
-      <div id="scoreboard-score-container">
-        <div id="home"> <h1> Home Score: <h2 id="home-score">${store.game_stats.home_score}</h2></h1></div>
-      <div id="away"> <h1> Away Score: <h2 id="away-score">${store.game_stats.away_score}</h2></h1></div>
-      </div>
-      <div id="scoreboard-inningDeets-container">
-        <ul>Inning: Top of The First
-          <li>Strikes:</li>
-          <li>Balls:</li>
-          <li>Foul Balls:</li>
-          <li>Outs:</li>
-          </ul>
-      </div>
-      </div>
-  <div id="stripes" class="field">
-    <div class="field-inner">
-    </div>
-    <div class="right-field-line">
-    </div>
-    <div class="left-field-line">
-    </div>
-    <div class="infield">
-      <div class="infield-inner">
-        <span class="home">
-          <span class="plate">
-          </span>
-        </span>
-        <span class="first">
-        </span>
-        <span class="second">
-        </span>
-        <span class="third">
-        </span>
-        <div class="pitchers-mound">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<hr>
-<br>
-<br>`
-// -------------------end-------------------------//
-
-
-//--------------------------Array Helper---------------------------------//\
-//This Array helper allows to make comparing Easy on the eyes in our functions//
-//Unlike Ruby, Javscript does not make it simple to compare arrays to eachother//
-// Warn if overriding existing method
-  if(Array.prototype.equals)
-      console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");
-  // attach the .equals method to Array's prototype to call it on any array
-  Array.prototype.equals = function (array) {
-      // if the other array is a falsy value, return
-      if (!array)
-          return false;
-
-      // compare lengths - can save a lot of time
-      if (this.length != array.length)
-          return false;
-
-      for (var i = 0, l=this.length; i < l; i++) {
-          // Check if we have nested arrays
-          if (this[i] instanceof Array && array[i] instanceof Array) {
-              // recurse into the nested arrays
-              if (!this[i].equals(array[i]))
-                  return false;
-          }
-          else if (this[i] != array[i]) {
-              // Warning - two different object instances will never be equal: {x:20} != {x:20}
-              return false;
-          }
-      }
-      return true;
-  }
-
 
 })

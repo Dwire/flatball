@@ -1,0 +1,196 @@
+
+.perspective {background:black}
+
+.field {
+  position:relative;
+  height:50vw;
+  width:50vw;
+  margin:1vw auto;
+  background:#004d00;
+  border-radius:5%;
+  border-bottom-left-radius:10%;
+  border-top-right-radius:70%;
+  border:2vw solid #994d00;
+  transform:
+    rotate(-45deg);
+  overflow:hidden;
+}
+
+
+.field{
+background: repeating-linear-gradient(
+  -45deg,
+  #004d00,
+  #004d00 1.5vw,
+  #004500 1.5vw,
+  #004500 3vw);
+}
+
+
+
+.right-field-line {
+  height:47.6vw;
+  width:1px;
+  background:#fff;
+  position:absolute;
+  top:-2vw;
+  left:4.45vw;
+  z-index:1000;
+  opacity:.6;}
+
+.left-field-line {
+  width:47.5vw;
+  height:1px;
+  background:#fff;
+  position:absolute;
+  bottom:4.35vw;
+  left:4.45vw;
+  z-index:1000;
+  opacity:.6;
+}
+.infield {
+  position:absolute;
+  height:20vw;
+  width:20vw;
+  background-color:#994d00;
+  left:4vw;
+  bottom:4vw;
+  border-top-right-radius:75%;
+  z-index:2;
+}
+.infield-inner {
+  background:#004d00;
+  height:11vw;
+  width:11vw;
+  bottom:1vw;
+  left:1vw;
+  position:absolute;
+}
+.stripes .infield-inner {
+  background: repeating-linear-gradient(
+  -45deg,
+  #004d00,
+  #004d00 1vw,
+  #004500 1vw,
+  #004500 2vw
+);
+}
+.wide-stripes .infield-inner {
+  background: repeating-linear-gradient(
+  -45deg,
+  #004d00,
+  #004d00 4vw,
+  #004500 4vw,
+  #004500 8vw
+);
+}
+.radial .infield-inner, .fan .infield-inner {
+  background: repeating-radial-gradient(
+  circle,
+  #004d00,
+  #004d00 1vw,
+  #004500 1vw,
+  #004500 2vw
+);
+}
+  .cross-cut .infield-inner{
+    background-color:#004d00;
+background-image: linear-gradient(90deg, rgba(0,100,0,.5) 50%, transparent 50%),
+linear-gradient(rgba(0,100,0,.5) 50%, transparent 50%);
+background-size:20px 20px;
+}
+.diamond .infield-inner {
+    background-color:#004d00;
+background-image:
+repeating-linear-gradient(-75deg,rgba(0,100,0,.5), rgba(0,100,0,.5) 10px, transparent 10px,
+transparent 20px),
+  repeating-linear-gradient(-15deg,rgba(0,100,0,.5), rgba(0,100,0,.5) 10px, transparent 10px,
+transparent 20px);
+}
+
+
+.home {
+  width:5vw;
+  height:5vw;
+  border-radius:50%;
+  background:#994d00;
+  position:absolute;
+  left:-2.5vw;
+  bottom:-2.5vw;
+}
+.plate {
+  content:"";
+  background:#fff;
+  height:.6vw;
+  width:.7vw;
+  position:absolute;
+  left:calc(50% - .45vw);
+  top:calc(50% - .11vw);
+  transform:rotate(45deg);}
+
+.plate:before {
+  content:"";
+  background:#fff;
+  height:.5vw;
+  width:.5vw;
+  position:absolute;
+  left:.1vw;
+  bottom:-.2vw;
+  transform:
+    rotate(45deg);
+
+}
+
+.pitchers-mound {
+  width:3vw;
+  height:3vw;
+  border-radius:50%;
+  background:#994d00;
+  position:absolute;
+  left:calc(50% - 1.5vw);
+  bottom:calc(50% - 1.5vw);
+}
+.pitchers-mound:after {
+  width:1vw;
+  height:.25vw;
+  background:#fff;
+  content:"";
+  position:absolute;
+  transform:rotate(45deg);
+  top:calc(50% - .1vw);
+  left:calc(50% - .5vw);
+}
+
+.first, .second, .third {
+  width:1.75vw;
+  height:1.75vw;
+  background:#994d00;
+  position:absolute;
+  background:#994d00;
+  border-top-left-radius:50%;
+  right:-.5vw;
+  bottom:-.6vw;}
+
+.first:after, .second:after, .third:after {
+  background:#fff;
+  content:" ";
+  width:.5vw;
+  height:.5vw;
+  position:absolute;
+  bottom:0;
+  right:0;}
+
+.second {
+  top:-.5vw;
+  transform:rotate(-90deg);
+}
+
+.third {
+  left:-.5vw;
+  top:-.5vw;
+  transform:rotate(180deg)}
+label {
+  color:#fff;
+  font-family:"Arvo";   font-size:20px;padding:15px;
+display:inline-block;}
+select {font-size:18px;position:relative;display:inline-block;top:-2px;}

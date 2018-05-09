@@ -200,8 +200,8 @@ transparent 20px);
   background-color: black;
   color: #fff;
   border-radius: 5px;
-  padding: 20px;
   font-size: 150%;
+  justify-self: center;
 }
 #both-controllers {
   display: grid;
@@ -215,8 +215,9 @@ transparent 20px);
   background-color: black;
   color: #fff;
   border-radius: 5px;
-  padding: 20px;
+  padding-bottom: 20px;
   font-size: 150%;
+  justify-self: center;
 }
 
 #gamelog-scroll{
@@ -231,8 +232,9 @@ transparent 20px);
   font-family:sans-serif;
   padding:10px;
 }
-
-
+button {
+  width: -webkit-fill-available;
+}
 .third {
   left:-.5vw;
   top:-.5vw;

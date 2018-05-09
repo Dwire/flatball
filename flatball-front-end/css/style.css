@@ -174,8 +174,8 @@ transparent 20px);
 .first:after, .second:after, .third:after {
   background:#fff;
   content:" ";
-  width:.5vw;
-  height:.5vw;
+  width:2.5vw;
+  height:2.5vw;
   position:absolute;
   bottom:0;
   right:0;}

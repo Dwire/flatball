@@ -151,8 +151,8 @@ document.addEventListener('DOMContentLoaded', function(){
   //function runs a random play when both buttons are clicked once//
   //added multiple outs and strikes/balls to raise the likilihood of them occuring over hits//
   function executePlay (){
-    // randPlay = Math.floor(Math.random()*15) + 1
-    randPlay = 3
+    randPlay = Math.floor(Math.random()*15) + 1
+    // randPlay = 3
 
     // b = ball s = strike f = foul ball o = out //
     const s = document.getElementById('strikes')

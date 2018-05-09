@@ -1,0 +1,145 @@
+// var baseRunning = (function(){
+//  var baseStatus = store.live_game.bases
+//  var score = 0
+//  // var baseStatus = [1,1,1,0]
+//
+//   return function looper(numIn){
+//     var num = numIn
+//     for (var i = baseStatus.length -1; i >= 0; i--){
+//       if (baseStatus[i] === 1){
+//         score += 1
+//         baseStatus[i] = baseStatus[i - 1]
+//         baseStatus[i - 1] = 0
+//       }else if(i === 0) {
+//         break
+//       }else{
+//         baseStatus[i] = baseStatus[i - 1]
+//         baseStatus[i - 1] = 0
+//       }
+//       // teamScore(score)
+//     }
+//
+//     console.log(baseStatus)
+//     console.log(score)
+//     ///////////-------need this not to change
+//
+//     debugger
+//       keepNum = num
+//     num -= 1
+//     if (num > 0){
+//       baseRunning(num)
+//     }else{
+//       console.log(`bases = ${baseStatus} and Score = ${score}`);
+//       store.live_game.bases = baseStatus
+//       teamScore(score)
+//       cleanScore(num)
+//     }
+//   }
+//
+// })()
+
+-----------------------------Print PLay By PLay--------------------------
+
+      // case 6:
+      //   double()
+      //   pByp = document.createElement('i')
+      //   pByp.innerHTML = "<hr>New Batter Up<br><br>"
+      //   gamelogScroll.append(pByp)
+      //   out(s,f,b,o)
+      // break;
+      // case 7:
+      //   triple()
+      //   pByp = document.createElement('i')
+      //   pByp.innerHTML = "<hr>New Batter Up<br>"
+      //   gamelogScroll.append(pByp)
+      //   out(s,f,b,o)
+      // break;
+      // case 8:
+      //   homerun()
+      //   pByp = document.createElement('i')
+      //   pByp.innerHTML = "<hr>New Batter Up<br>"
+      //   gamelogScroll.append(pByp)
+      //   out(s,f,b,o)
+      // break;
+      // case 9:
+      // pByp = document.createElement('i')
+      // pByp.innerHTML = "A line drive straight to the 2nd Baseman's mitt - 1 out recorded; New Batter up<hr><br>"
+      // gamelogScroll.append(pByp)
+      //   store.live_game.outs += 1
+      //   store.game_stats.out_count +=1
+      //   out(s,f,b,o)
+      // break;
+      // case 10:
+      // pByp = document.createElement('i')
+      // pByp.innerHTML = "A deep fly to warning track but caught by the OF - 1 out recorded; New Batter up<hr><br>"
+      // gamelogScroll.append(pByp)
+      //   store.live_game.outs += 1
+      //   store.game_stats.out_count +=1
+      //   out(s,f,b,o)
+      // break;
+      // case 11:
+      //   store.live_game.balls += 1
+      //   if (store.live_game.balls === 4){
+      //     alert("WALK")
+      //     walk()
+      //     out(s,f,b,o)
+      //   }else {
+      //     displayStats(s,f,b,o)
+      //   }
+      //   // alert(`Ball ${store.live_game.balls}`)
+      // break;
+      // case 12:
+      //   store.live_game.strikes += 1
+      //   if (store.live_game.strikes === 3) {
+      //     pByp = document.createElement('i')
+      //     pByp.innerHTML = "<hr>Batter left completely looking at strike 3... Batter is out! - 1 out recorded; New Batter up<hr><br>"
+      //     gamelogScroll.append(pByp)
+      //     alert('Strike Out')
+      //     store.live_game.outs += 1
+      //     out(s,f,b,o)
+      //   }else{
+      //     s.innerText =`Strikes: ${store.live_game.strikes}`
+      //     // alert(`Strike ${store.live_game.strikes}`)
+      //   }
+      // break;
+      // case 13:
+      //   store.live_game.foul_balls += 1
+      //   pByp = document.createElement('i')
+      //   pByp.innerHTML = "This ball is headed down line and its going, going... Foul Ball!<br><br>"
+      //   gamelogScroll.append(pByp)
+      //   if (store.live_game.strikes < 2){
+      //     store.live_game.strikes += 1
+      //     displayStats(s,f,b,o)
+      //   }else{
+      //     displayStats(s,f,b,o)
+      //   }
+      // // alert(`Foul Ball! That's Strike ${store.live_game.strikes}`)
+      // break;
+      // case 14:
+      //   store.live_game.balls += 1
+      //   if (store.live_game.balls === 4){
+      //     alert("WALK")
+      //     walk()
+      //     out(s,f,b,o)
+      //   }else {
+      //     displayStats(s,f,b,o)
+      //   }
+      //   // alert(`Ball ${store.live_game.balls}`)
+      // break;
+
+
+-------------------------------Stretch Goal-------------------------------------
+// const steal = function steals (basePositions){} -- stretch goal ( [2/5 chance success] )
+// const bunt = function bunts (basePositions){} -- stretch goal (runners auto adv 1 & bunter = out)
+// const hitBatter = function hitBatters (basePositions){} -- stretch goal
+//end//
+
+//GameLog div will use these functions above ^ to call out and log random plays//
+//and announce the game play by play to the screen as the players hit their controllers//
+// can be p tags or an unordered list <-- head with innings (prefer this)//
+
+//Can also use above functions to help with clearing on strikeouts and walks outs//
+//still need to throw in logic that clears on outs and strikes and walks//
+//for a new a batter//
+// This function will generate a random play in the game //
+// This function is utilized in controller-button handler functions below it//

@@ -1,5 +1,8 @@
 
-.perspective {background:black}
+.perspective {
+  background:black;
+  color:white;}
+
 
 .field {
   position:relative;

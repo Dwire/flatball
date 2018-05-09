@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function(){
     new Game().render()
     appBody.innerHTML = ""
     alert('GAME ON')
-    appBody.append(fieldName, field, gamelogDiv, homeScoreDiv,
-      awayScoreDiv, inningDetailsDiv, battersControlsContainer,
+    appBody.append(fieldName, field, gamelogDiv,
+      inningDetailsDiv, battersControlsContainer,
       pitchersControlsContainer)
   }
   //End main page containers/setup//
@@ -18,17 +18,17 @@ document.addEventListener('DOMContentLoaded', function(){
   const gamelogDiv = document.createElement('div')
   gamelogDiv.setAttribute('id', 'gamelog')
   gamelogDiv.innerHTML = `<h1>Game Log</h1><div id="gamelog-scroll" style="height:100px;width:600px;overflow:auto;border:8px solid black;padding:2%;background-color:lightblue;color:black;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;"></div><br><br>`
-  const homeScoreDiv = document.createElement('div')
-  homeScoreDiv.setAttribute('id', 'home-score-div')
-  homeScoreDiv.innerHTML = `<h1>Home Score</h1>
-  <p id="home-score">${store.game_stats.home_score}</p>`
-  const awayScoreDiv = document.createElement('div')
-  awayScoreDiv.setAttribute('id', 'away-score-div')
-  awayScoreDiv.innerHTML = `<h1>Away Score: </h1>
-  <p id=away-score>${store.game_stats.away_score}</p>`
+  // const homeScoreDiv = document.createElement('div')
+  // homeScoreDiv.setAttribute('id', 'home-score-div')
+  // homeScoreDiv.innerHTML = `<h1>Home Score</h1>
+  // <p id="home-score">${store.game_stats.home_score}</p>`
+  // const awayScoreDiv = document.createElement('div')
+  // awayScoreDiv.setAttribute('id', 'away-score-div')
+  // awayScoreDiv.innerHTML = `<h1>Away Score: </h1>
+  // <p id=away-score>${store.game_stats.away_score}</p>`
   const inningDetailsDiv = document.createElement('div')
   inningDetailsDiv.setAttribute('id', 'inningDetailsDiv')
-  // let current_inning = inningCount()
+  let current_inning = inningCount()
   inningDetailsDiv.innerHTML = `<div><h1 id="inning">Inning: ${inningCount()} </h1></div>
   <div id="strikes">Strikes: ${store.live_game.strikes}</div><br>
   <div id="balls">Balls: ${store.live_game.balls}</div><br>
@@ -152,8 +152,7 @@ document.addEventListener('DOMContentLoaded', function(){
   //added multiple outs and strikes/balls to raise the likilihood of them occuring over hits//
   function executePlay (){
     randPlay = Math.floor(Math.random()*15) + 1
-    // randPlay = 3
-
+    // randPlay = 15
     // b = ball s = strike f = foul ball o = out //
     const s = document.getElementById('strikes')
     const b = document.getElementById('balls')
@@ -212,31 +211,35 @@ document.addEventListener('DOMContentLoaded', function(){
       case 9:
       case 10:
         baseRunning(1)(1)
-        console.log("Hit single")
+        playByplay("Single one-hopper, to short right field!")
         out(s,f,b,o)
       break;
       case 11:
       case 12:
         baseRunning(2)(2)
-        console.log('hit double')
+        playByplay("Double, into the gap of Right-Center Field!!")
         out(s,f,b,o)
       break;
       case 13:
       case 14:
         baseRunning(3)(3)
-
-        console.log('hit triple')
+        playByplay("Triple, down the line into the left corner!")
         out(s,f,b,o)
       break;
       case 15:
         baseRunning(4)(4)
-        console.log('hit homerun')
+        playByplay("Homerun, touch them all!!")
         out(s,f,b,o)
       break;
     }
     console.log(store.live_game)
   }
-
+  function playByplay(hit) {
+    let gamelogScroll = document.getElementById('gamelog-scroll')
+    pByp = document.createElement('i')
+    pByp.innerHTML = `It's a clutch ${hit}; - New Batter Up<br><br><hr>`
+    gamelogScroll.append(pByp)
+  }
 
 
   //-------------end CASE STATEMENT ------------------//
@@ -394,30 +397,45 @@ document.addEventListener('DOMContentLoaded', function(){
     <br>
     <br>
     <hr>
-    <div id="stripes" class="field">
-      <div class="field-inner">
-  </div>
-  <div class="right-field-line">
-  </div>
-  <div class="left-field-line">
-  </div>
-  <div class="infield">
-    <div class="infield-inner">
-      <span class="home">
-        <span class="plate">
+    <div class="perspective">
+      <div id="entire-scoreboard">
+      <div id="scoreboard-score-container">
+        <div id="home"> <h1> Home Score: <h2 id="home-score">${store.game_stats.home_score}</h2></h1></div>
+      <div id="away"> <h1> Away Score: <h2 id="away-score">${store.game_stats.away_score}</h2></h1></div>
+      </div>
+      <div id="scoreboard-inningDeets-container">
+        <ul>Inning: Top of The First
+          <li>Strikes:</li>
+          <li>Balls:</li>
+          <li>Foul Balls:</li>
+          <li>Outs:</li>
+          </ul>
+      </div>
+      </div>
+  <div id="stripes" class="field">
+    <div class="field-inner">
+    </div>
+    <div class="right-field-line">
+    </div>
+    <div class="left-field-line">
+    </div>
+    <div class="infield">
+      <div class="infield-inner">
+        <span class="home">
+          <span class="plate">
+          </span>
         </span>
-      </span>
-      <span class="first">
-      </span>
-      <span class="second">
-      </span>
-      <span class="third">
-      </span>
-      <div class="pitchers-mound">
+        <span class="first">
+        </span>
+        <span class="second">
+        </span>
+        <span class="third">
+        </span>
+        <div class="pitchers-mound">
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 <hr>
 <br>

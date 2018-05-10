@@ -11,16 +11,16 @@
     <div class="perspective">
 
       <div id="entire-scoreboard">
-        <div class="box 1"id="home"> <h1 id="home-sb">Home Score<h2 id="home-score">${store.game_stats.home_score}</h2></h1></div>
+        <div class="box 1"id="home"> <h3 id="home-sb">Home Score<h4 id="home-score">${store.game_stats.home_score}</h4></h3></div>
 
         <div class="box 2" id="scoreboard-inningDeets-container">
-          <h3 id="inning">${inningCount()} </h3>
+          <h4 id="inning">${inningCount()} </h4>
         <div id="sbo"><p id="strikes">Strikes: ${store.live_game.strikes}</p><br>
           <p id="balls">Balls: ${store.live_game.balls}</p><br>
           <p id="outs">Outs: ${store.live_game.outs}</p></div>
         </div>
 
-        <div class="box 3"id="away"> <h1 id="away-sb">Away Score<h2 id="away-score">${store.game_stats.away_score}</h2></h1></div>
+        <div class="box 3"id="away"> <h3 id="away-sb">Away Score<h4 id="away-score">${store.game_stats.away_score}</h4></h3></div>
       </div>
 
   <div id="stripes" class="field">

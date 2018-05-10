@@ -167,7 +167,7 @@ background: repeating-linear-gradient(
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 0px;
-  background-color: black;
+  background-color: burlywood;
   color: #444;;
 }
 
@@ -196,13 +196,13 @@ background: repeating-linear-gradient(
 }
 
 #away{
-  border:8px solid lightblue;
+  border:8px solid white;
   padding: 5px;
   margin: 5px;
 }
 
 #home{
-  border:8px solid lightblue;
+  border:8px solid white;
   padding: 5px;
   margin: 5px;
 }
@@ -231,46 +231,54 @@ background: repeating-linear-gradient(
   margin: -5px;
 }
 
-#inning{
-  border-bottom: 2px solid white;
-}
 
 #scoreboard-inningDeets-container{
- border:8px solid lightblue;
+ border:8px solid white;
   padding-left: 15px;
   padding-right: 15px;
   margin: 10px;
 }
 
 #inning{
-  border: 5px solid lightblue;
+  border: 5px solid white;
   padding: 5px
 }
 
 #sbo{
-  border:2px solid lightblue;
+  border:2px solid white;
   padding: 10px;
   margin-bottom: 20px;
 }
 
 #home-sb{
-  border: 5px solid lightblue;
+  border: 5px solid white;
   padding: 5px
 }
 
 #home-score{
-  border: 5px solid lightblue;
-  padding: 5px
+  border: 5px solid white;
+  padding: 5px;
+  font-size: 50px;
+  text-align:-webkit-center;
 }
 
 #away-sb{
-  border: 5px solid lightblue;
+  border: 5px solid white;
   padding: 5px
 }
 
 #away-score{
-  border: 5px solid lightblue;
-  padding: 5px
+  border: 5px solid white;
+  padding: 5px;
+  font-size: 50px;
+  text-align:-webkit-center;
+}
+
+#field-name{
+  border: 5px solid black;
+  text-align:-webkit-center;
+  background-color: burlywood;
+  font-size:
 }
 
 

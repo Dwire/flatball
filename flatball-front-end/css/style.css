@@ -1,13 +1,15 @@
 
 .perspective {
   background:black;
-  color:white;}
+  color:black;
+  border: 2px solid black;
+  border-radius: 3%;}
 
 
 .field {
   position:relative;
-  height:50vw;
-  width:50vw;
+  height: 37vw;
+  width: 37vw;
   margin:1vw auto;
   background:#004d00;
   border-radius:5%;
@@ -78,15 +80,7 @@ background: repeating-linear-gradient(
   #004500 2vw
 );
 }
-.wide-stripes .infield-inner {
-  background: repeating-linear-gradient(
-  -45deg,
-  #004d00,
-  #004d00 4vw,
-  #004500 4vw,
-  #004500 8vw
-);
-}
+
 .home {
   width:5vw;
   height:5vw;
@@ -96,6 +90,7 @@ background: repeating-linear-gradient(
   left:-2.5vw;
   bottom:-2.5vw;
 }
+
 .plate {
   content:"";
   background:#fff;
@@ -163,50 +158,74 @@ background: repeating-linear-gradient(
   transform:rotate(-90deg);
 }
 
+/*Set up of Grid of Our Scoreboard*/
 #entire-scoreboard {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 0px;
-  background-color: burlywood;
-  color: #444;;
+  grid-gap: -7px;
+  background-color: black;
+  color: #444;
+  border: 2px solid white;
+  border-radius: 2pc;
+  margin-left: 300px;
+  margin-right: 300px;
+  background-color: green;
+  /* margin-bottom: 0px; */
 }
 
+/*Each frame of the scoreboard*/
 .box {
   background-color: black;
   color: #fff;
   border-radius: 5px;
-  font-size: 150%;
+  font-size: 85%;
   justify-self: center;
 }
+
+/*Handles both css for Pitching and Batter Controllers Container*/
 #both-controllers {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 0px;
-  background-color: black;
+  background-color: burlywood;
   color: #444;
+  border: 2px solid white;
+  border-radius: 10pc;
+  margin: 20px;
+
+
 }
 
+/*controller class*/
 .controller {
-  background-color: black;
+  background-color: burlywood;
   color: #fff;
   border-radius: 5px;
   padding-bottom: 20px;
   font-size: 150%;
   justify-self: center;
+  color: black;
 }
 
+/*Away Title*/
 #away{
   border:8px solid white;
-  padding: 5px;
-  margin: 5px;
+  margin: 3px;
+  padding: 0px;
+  background-color: green;
+  text-align: -webkit-center;
 }
 
+/*Home Title*/
 #home{
   border:8px solid white;
-  padding: 5px;
-  margin: 5px;
+  padding: 0px;
+  margin: 3px;
+  background-color: green;
+  text-align: -webkit-center;
 }
 
+/*Game Log Scroll specifications*/
 #gamelog-scroll{
   height:100px;
   width:600px;
@@ -219,8 +238,7 @@ background: repeating-linear-gradient(
   font-family:sans-serif;
   padding:10px;
 }
-
-
+/*Game Log Container specifications*/
 #gamelog{
   margin-right: auto;
   margin-left: auto;
@@ -228,36 +246,47 @@ background: repeating-linear-gradient(
   text-align:-webkit-center;
   background-color: burlywood;
   border: 8px solid black;
+  border-radius: 3pc;
 }
+
 
 .box p{
   margin: -5px;
 }
 
-
+/*Strikes Balls Outs container set up*/
 #scoreboard-inningDeets-container{
  border:8px solid white;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin: 10px;
+ padding-left: 15px;
+ padding-right: 15px;
+ margin: 0px;
+ background-color: green;
+ margin-top: 3px;
+ margin-bottom: 100px;
 }
 
+/*Inning Title*/
 #inning{
   border: 5px solid white;
-  padding: 5px
+  padding: 5px;
+  text-align:-webkit-center
 }
 
+/*Strikes Balls Outs specifically Container set up*/
 #sbo{
   border:2px solid white;
   padding: 10px;
   margin-bottom: 20px;
 }
 
+
+/*Home's run container*/
 #home-sb{
   border: 5px solid white;
   padding: 5px
 }
 
+/*Home's title container*/
 #home-score{
   border: 5px solid white;
   padding: 5px;
@@ -265,11 +294,14 @@ background: repeating-linear-gradient(
   text-align:-webkit-center;
 }
 
+/*Away's Runs container*/
 #away-sb{
   border: 5px solid white;
   padding: 5px
 }
 
+
+/*Away's title container*/
 #away-score{
   border: 5px solid white;
   padding: 5px;
@@ -277,11 +309,14 @@ background: repeating-linear-gradient(
   text-align:-webkit-center;
 }
 
+/*Field Name Container*/
 #field-name{
   border: 5px solid black;
   text-align:-webkit-center;
   background-color: burlywood;
-  font-size:
+  border-radius: 2pc;
+  margin: 0px;
+  text-shadow: 2px 2px lightblue;
 }
 
 

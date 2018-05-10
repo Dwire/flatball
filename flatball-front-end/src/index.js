@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function(){
   //Main Game Simulator Page (Game Board) - Containers/Set-up Constants//
   const gamelogDiv = document.createElement('div')
   gamelogDiv.setAttribute('id', 'gamelog')
-  gamelogDiv.innerHTML = `<h1>Game Log</h1><div id="gamelog-scroll"></div><br><br>`
+  gamelogDiv.innerHTML = `<h1>Play By Play</h1><div id="gamelog-scroll"></div><br><br>`
 
   // const inningDetailsDiv = document.createElement('div')
   // inningDetailsDiv.setAttribute('id', 'inningDetailsDiv')

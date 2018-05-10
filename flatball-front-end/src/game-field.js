@@ -1,7 +1,7 @@
 //---------------Baseball Field ----------------------------//
   fieldName = document.createElement('h1')
   fieldName.setAttribute('id', 'field-name')
-  fieldName.innerText = "Coders Field"
+  fieldName.innerText = "Coders Field - Flatiron District, NYC"
   field = document.createElement('div')
   field.setAttribute('class', 'perspective')
   field.innerHTML = `

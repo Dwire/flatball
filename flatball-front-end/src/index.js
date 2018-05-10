@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
   function executePlay (){
-    randPlay = Math.floor(Math.random()*15) + 1
+    randPlay = Math.floor(Math.random()*24) + 1
     // randPlay = 8
     // b = ball s = strike f = foul ball o = out //
     const s = document.getElementById('strikes')
@@ -280,6 +280,8 @@ document.addEventListener('DOMContentLoaded', function(){
     switch (randPlay) {
       case 1:
       case 2:
+      case 3:
+      case 4:
         store.live_game.strikes += 1
         if (store.live_game.strikes === 3) {
           playCall('Strike Out!')
@@ -290,7 +292,9 @@ document.addEventListener('DOMContentLoaded', function(){
           s.innerText =`Strikes: ${store.live_game.strikes}`
         }
       break;
-      case 3:
+      case 5:
+      case 6:
+      case 7:
         store.live_game.balls += 1
         if (store.live_game.balls === 4){
           playCall('Ball Four!')
@@ -301,8 +305,9 @@ document.addEventListener('DOMContentLoaded', function(){
           displayStats(s,b,o)
         }
       break;
-      case 4:
-      case 5:
+      case 8:
+      case 9:
+      case 10:
         store.live_game.foul_balls += 1
           playCall("Foul Ball")
         if (store.live_game.strikes < 2){
@@ -312,36 +317,40 @@ document.addEventListener('DOMContentLoaded', function(){
           displayStats(s,b,o)
         }
       break;
-      case 6:
-      case 7:
+      case 11:
+      case 12:
+      case 13:
+      case 14:
+      case 15:
         store.live_game.outs += 1
         store.game_stats.out_count +=1
         playCall("Out")
         out(s,b,o)
       break;
-      case 8:
-      case 9:
-      case 10:
+      case 16:
+      case 17:
+      case 18:
         baseRunning(1)(1)
         playCall("Hit a Single")
         playByplay("Single one-hopper, to short right field!")
         out(s,b,o)
       break;
-      case 11:
-      case 12:
+      case 19:
+      case 20:
         baseRunning(2)(2)
         playCall("Hit a Double")
         playByplay("Double, into the gap of Right-Center Field!!")
         out(s,b,o)
       break;
-      case 13:
-      case 14:
+      case 21:
+      case 22:
         baseRunning(3)(3)
         playCall("Hit a Triple")
         playByplay("Triple, down the line into the left corner!")
         out(s,b,o)
       break;
-      case 15:
+      case 23:
+      case 24:
         baseRunning(4)(4)
         playCall("HOMERUN!!!")
         playByplay("Homerun, touch them all!!")

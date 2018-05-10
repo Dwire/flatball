@@ -420,47 +420,4 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   // end --- display and reseting balls/strikes/change of inning/controls---//
 
-
-
-//---Inning function to track and count what inning it is using cases---//
-  function inningCount() {
-    let outCount = store.game_stats.out_count
-    // let outCount = 9
-    let inning = ""
-
-    switch (outCount) {
-      case 0:
-      case 1:
-      case 2:
-          inning = "Top 1st";
-          break;
-      case 3:
-      case 4:
-      case 5:
-          inning = "Bottom 1st";
-          break;
-      case 6:
-      case 7:
-      case 8:
-          inning = "Top 2nd";
-          break;
-      case 9:
-      case 10:
-      case 11:
-          inning = "Bottom 2nd";
-          break;
-      case 12:
-      case 13:
-      case 14:
-          inning = "Top 3rd";
-          break;
-      case 15:
-      case 16:
-      case 17:
-          inning = "Bottom 3rd";
-          break;
-  }
-    return inning
-  }
-
 })

@@ -197,13 +197,13 @@ background: repeating-linear-gradient(
 
 #away{
   border:8px solid lightblue;
-  padding: 10px;
+  padding: 5px;
   margin: 5px;
 }
 
 #home{
   border:8px solid lightblue;
-  padding: 10px;
+  padding: 5px;
   margin: 5px;
 }
 
@@ -239,8 +239,7 @@ background: repeating-linear-gradient(
  border:8px solid lightblue;
   padding-left: 15px;
   padding-right: 15px;
-  margin-left:10px;
-  margin-right:10px;
+  margin: 10px;
 }
 
 #inning{
@@ -251,7 +250,7 @@ background: repeating-linear-gradient(
 #sbo{
   border:2px solid lightblue;
   padding: 10px;
-  margin: 5px;
+  margin-bottom: 20px;
 }
 
 #home-sb{

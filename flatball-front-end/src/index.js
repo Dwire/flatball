@@ -5,16 +5,112 @@ document.addEventListener('DOMContentLoaded', function(){
   function playBallHandler () {
     new Game().render()
     appBody.innerHTML = ""
-    alert('GAME ON')
-    appBody.append(fieldName, field, gamelogDiv)
+    // alert('GAME ON')
+    appBody.append(fieldName, field)
   }
+
+
 
   //batter's controller events
   bPower.addEventListener('click', powerHandler)
   bHit.addEventListener('click', contactHandler)
+
+  appBody.addEventListener('keydown', contactPressHandler)
+  appBody.addEventListener('keydown', powerPressHandler)
+
+  function contactPressHandler(){
+    if (event.which === 75) {
+      bHit.click
+      if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
+        alert(`You can't hit until the Pitcher selects their pitch`)
+      }else{
+        console.log(currentPlay)
+        currentPlay.push({bat: "contact"})
+      }if (currentPlay.length === 2){
+        executePlay()
+        currentPlay = []
+      }
+    }
+  }
+  function powerPressHandler() {
+    if (event.which === 76) {
+      bPower.click
+      if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
+        alert(`You can't hit until the Pitcher selects their pitch`)
+      }else{
+        console.log(currentPlay)
+        currentPlay.push({bat: "power"})
+      }if (currentPlay.length === 2){
+        executePlay()
+        currentPlay = []
+      }
+    }
+  }
+
+
+
+
   //pitcher's controller events
   pSpecial.addEventListener('click', spHandler)
   pFastball.addEventListener('click', fbHandler)
+
+  appBody.addEventListener('keydown', spPressHandler)
+  appBody.addEventListener('keydown', fbPressHandler)
+
+  function fbPressHandler(){
+    if (event.which === 65) {
+      console.log("Button being pressed")
+      pFastball.click
+      if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
+        alert('You already have your pitch selected, waiting for the Batter to swing')
+      }else{
+        console.log(currentPlay)
+        currentPlay.push({pitch: "fastball"})
+      }if (currentPlay.length === 2){
+        executePlay()
+        currentPlay = []
+      }
+    }
+    console.log("Event coming through")
+  }
+
+  function spPressHandler(){
+    if (event.which === 83){
+      console.log("Button being pressed")
+      pSpecial.click
+      console.log("Event coming through")
+      if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
+        alert('You already have your pitch selected, waiting for the Batter to swing')
+      }else{
+        console.log(currentPlay)
+        currentPlay.push({pitch: "sp"})
+      }if (currentPlay.length === 2){
+        executePlay()
+        currentPlay = []
+      }
+    }
+  }
+
+  // function contactPressHandler(){
+  //   if (event.which === 79) {
+  //     event.preventDefault()
+  //     bHit.click
+  //     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
+  //       alert(`You can't hit until the Pitcher selects their pitch`)
+  //     }else{
+  //       console.log(currentPlay)
+  //       currentPlay.push({bat: "contact"})
+  //     }if (currentPlay.length === 2){
+  //       executePlay()
+  //       currentPlay = []
+  //     }
+  //   }
+  // }
+
+
+
+
+
   //Array for the current play in action//
   let currentPlay = []
   //THE HANFLERS FOR THE PITCHER & BATTER CONTROLLERS//
@@ -23,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
       alert(`You can't hit until the Pitcher selects their pitch`)
     }else{
+      console.log(currentPlay)
       currentPlay.push({bat: "contact"})
     }if (currentPlay.length === 2){
       executePlay()
@@ -31,9 +128,14 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   //Handler for the Batter's Power Hit
   function powerHandler() {
+    if (event.which === 80) {
+      event.preventDefault()
+      bPower.click()
+    }
     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
       alert(`You can't hit until the Pitcher selects their pitch`)
     }else{
+      console.log(currentPlay)
       currentPlay.push({bat: "power"})
     }if (currentPlay.length === 2){
       executePlay()
@@ -42,9 +144,17 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   //Handler for the Pitcher's FastBall Pitch
   function fbHandler() {
+    console.log('The button being pressed is', event.which)
+    if (event.which === 82) {
+      event.preventDefault()
+      console.log("Button being pressed")
+      pFastball.click()
+    }
+    console.log("Event coming through")
     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
       alert('You already have your pitch selected, waiting for the Batter to swing')
     }else{
+      console.log(currentPlay)
       currentPlay.push({pitch: "fastball"})
     }if (currentPlay.length === 2){
       executePlay()
@@ -53,9 +163,14 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   //Handler for the Pitcher's Special Pitch
   function spHandler() {
+    if (event.which === 87) {
+      event.preventDefault()
+      pSpecial.click()
+    }
     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
       alert('You already have your pitch selected, waiting for the Batter to swing')
     }else{
+      console.log(currentPlay)
       currentPlay.push({pitch: "sp"})
     }if (currentPlay.length === 2){
       executePlay()
@@ -154,8 +269,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
   function executePlay (){
-    randPlay = Math.floor(Math.random()*15) + 1
-    // randPlay = 1
+    randPlay = Math.floor(Math.random()*24) + 1
+    // randPlay = 8
     // b = ball s = strike f = foul ball o = out //
     const s = document.getElementById('strikes')
     const b = document.getElementById('balls')
@@ -165,6 +280,8 @@ document.addEventListener('DOMContentLoaded', function(){
     switch (randPlay) {
       case 1:
       case 2:
+      case 3:
+      case 4:
         store.live_game.strikes += 1
         if (store.live_game.strikes === 3) {
           playCall('Strike Out!')
@@ -176,7 +293,9 @@ document.addEventListener('DOMContentLoaded', function(){
           s.innerText =`Strikes: ${store.live_game.strikes}`
         }
       break;
-      case 3:
+      case 5:
+      case 6:
+      case 7:
         store.live_game.balls += 1
         if (store.live_game.balls === 4){
           playCall('Ball Four!')
@@ -187,8 +306,9 @@ document.addEventListener('DOMContentLoaded', function(){
           displayStats(s,b,o)
         }
       break;
-      case 4:
-      case 5:
+      case 8:
+      case 9:
+      case 10:
         store.live_game.foul_balls += 1
           playCall("Foul Ball")
         if (store.live_game.strikes < 2){
@@ -198,36 +318,40 @@ document.addEventListener('DOMContentLoaded', function(){
           displayStats(s,b,o)
         }
       break;
-      case 6:
-      case 7:
+      case 11:
+      case 12:
+      case 13:
+      case 14:
+      case 15:
         store.live_game.outs += 1
         store.game_stats.out_count +=1
         playCall("Out")
         out(s,b,o)
       break;
-      case 8:
-      case 9:
-      case 10:
+      case 16:
+      case 17:
+      case 18:
         baseRunning(1)(1)
         playCall("Hit a Single")
         playByplay("Single one-hopper, to short right field!")
         out(s,b,o)
       break;
-      case 11:
-      case 12:
+      case 19:
+      case 20:
         baseRunning(2)(2)
         playCall("Hit a Double")
         playByplay("Double, into the gap of Right-Center Field!!")
         out(s,b,o)
       break;
-      case 13:
-      case 14:
+      case 21:
+      case 22:
         baseRunning(3)(3)
         playCall("Hit a Triple")
         playByplay("Triple, down the line into the left corner!")
         out(s,b,o)
       break;
-      case 15:
+      case 23:
+      case 24:
         baseRunning(4)(4)
         playCall("HOMERUN!!!")
         playByplay("Homerun, touch them all!!")
@@ -297,48 +421,5 @@ document.addEventListener('DOMContentLoaded', function(){
     o.innerText =`Outs: ${store.live_game.outs}`
   }
   // end --- display and reseting balls/strikes/change of inning/controls---//
-
-
-
-//---Inning function to track and count what inning it is using cases---//
-  // function inningCount() {
-  //   let outCount = store.game_stats.out_count
-  //   // let outCount = 9
-  //   let inning = ""
-  //
-  //   switch (outCount) {
-  //     case 0:
-  //     case 1:
-  //     case 2:
-  //         inning = "Top 1st";
-  //         break;
-  //     case 3:
-  //     case 4:
-  //     case 5:
-  //         inning = "Bottom 1st";
-  //         break;
-  //     case 6:
-  //     case 7:
-  //     case 8:
-  //         inning = "Top 2nd";
-  //         break;
-  //     case 9:
-  //     case 10:
-  //     case 11:
-  //         inning = "Bottom 2nd";
-  //         break;
-  //     case 12:
-  //     case 13:
-  //     case 14:
-  //         inning = "Top 3rd";
-  //         break;
-  //     case 15:
-  //     case 16:
-  //     case 17:
-  //         inning = "Bottom 3rd";
-  //         break;
-  // }
-  //   return inning
-  // }
 
 })

@@ -63,9 +63,17 @@
 
 //---------------------- Stats Top of Field ------------------------------------
 
-const gamelogDiv = document.createElement('div')
-  gamelogDiv.setAttribute('id', 'gamelog')
-  gamelogDiv.innerHTML = `<h1>Game Log</h1><div id="gamelog-scroll"></div><br><br>`
+const dropContainer = document.createElement('div')
+dropContainer.setAttribute('id', 'drop-container')
+const dropDown = document.createElement('div')
+dropDown.setAttribute("class","dropdown")
+dropDown.innerHTML = `<br><span id="dropTitle">Play-By-Play</span>
+  <div class="dropdown-content">
+    <div id=gamelog-container><p id="gamelog-scroll"></p></div>`
+dropContainer.append(dropDown)
+fieldName.append(dropContainer)
+
+
 
 
 //---------------------- Controls Bottom of Field ------------------------------
@@ -75,10 +83,10 @@ const battersControlsContainer = document.createElement('div')
   battersControlsContainer.innerHTML = `<h4>Batter's Controller</h4>`
 const bPower = document.createElement('button')
   bPower.setAttribute('id', 'power-hit')
-  bPower.innerText = 'Power Hit'
+  bPower.innerText = 'Power Hit (L)'
 const bHit = document.createElement('button')
   bHit.setAttribute('id', 'contact-hit')
-  bHit.innerText = 'Hit for Contact'
+  bHit.innerText = 'Hit for Contact (K)'
 
   battersControlsContainer.append(bPower, bHit)
 
@@ -88,10 +96,10 @@ const pitchersControlsContainer = document.createElement('div')
   pitchersControlsContainer.innerHTML = `<h4>Pitcher's Controller</h4>`
 const pFastball = document.createElement('button')
   pFastball.setAttribute('id', 'fastball')
-  pFastball.innerText = 'Fastball'
+  pFastball.innerText = 'Fastball (A)'
 const pSpecial = document.createElement('button')
   pSpecial.setAttribute('id', 'special-pitch')
-  pSpecial.innerText = 'Special Pitch'
+  pSpecial.innerText = 'Special Pitch (S)'
 
   pitchersControlsContainer.append(pFastball, pSpecial)
 

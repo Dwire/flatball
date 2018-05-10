@@ -22,7 +22,7 @@ homeScoreDiv.innerHTML = `<h1>Home Score</h1>
 <p id="home-score">${store.game_stats.home_score}</p>`
 const awayScoreDiv = document.createElement('div')
 awayScoreDiv.setAttribute('id', 'away-score-div')
-awayScoreDiv.innerHTML = `<h1>Away Score: </h1>
+awayScoreDiv.innerHTML = `<h1>Away Score</h1>
 <p id=away-score>${store.game_stats.away_score}</p>`
 const inningDetailsDiv = document.createElement('div')
 inningDetailsDiv.setAttribute('id', 'inningDetailsDiv')

@@ -199,7 +199,6 @@ document.addEventListener('DOMContentLoaded', function(){
     // b = ball s = strike f = foul ball o = out //
     const s = document.getElementById('strikes')
     const b = document.getElementById('balls')
-    const f = document.getElementById('fouls')
     const o = document.getElementById('outs')
     const gamelogScroll = document.getElementById('gamelog-scroll')
 
@@ -210,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function(){
         if (store.live_game.strikes === 3) {
           alert('Strike Out')
           store.live_game.outs += 1
-          out(s,f,b,o)
+          out(s,b,o)
         }else{
           s.innerText =`Strikes: ${store.live_game.strikes}`
           // alert(`Strike ${store.live_game.strikes}`)
@@ -221,9 +220,9 @@ document.addEventListener('DOMContentLoaded', function(){
         if (store.live_game.balls === 4){
           alert("WALK")
           walk()
-          out(s,f,b,o)
+          out(s,b,o)
         }else {
-          displayStats(s,f,b,o)
+          displayStats(s,b,o)
         }
         // alert(`Ball ${store.live_game.balls}`)
       break;
@@ -235,9 +234,9 @@ document.addEventListener('DOMContentLoaded', function(){
         gamelogScroll.append(pByp)
         if (store.live_game.strikes < 2){
           store.live_game.strikes += 1
-          displayStats(s,f,b,o)
+          displayStats(s,b,o)
         }else{
-          displayStats(s,f,b,o)
+          displayStats(s,b,o)
         }
       // alert(`Foul Ball! That's Strike ${store.live_game.strikes}`)
       break;
@@ -248,31 +247,31 @@ document.addEventListener('DOMContentLoaded', function(){
         pByp = document.createElement('i')
         pByp.innerHTML = "A dribbling groundball to SS, runner out at first - 1 out recorded; New Batter up<hr><br>"
         gamelogScroll.append(pByp)
-        out(s,f,b,o)
+        out(s,b,o)
       break;
       case 8:
       case 9:
       case 10:
         baseRunning(1)(1)
         playByplay("Single one-hopper, to short right field!")
-        out(s,f,b,o)
+        out(s,b,o)
       break;
       case 11:
       case 12:
         baseRunning(2)(2)
         playByplay("Double, into the gap of Right-Center Field!!")
-        out(s,f,b,o)
+        out(s,b,o)
       break;
       case 13:
       case 14:
         baseRunning(3)(3)
         playByplay("Triple, down the line into the left corner!")
-        out(s,f,b,o)
+        out(s,b,o)
       break;
       case 15:
         baseRunning(4)(4)
         playByplay("Homerun, touch them all!!")
-        out(s,f,b,o)
+        out(s,b,o)
       break;
     }
     console.log(store.live_game)
@@ -290,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 // --------Core functionality to --> display and resetting scoreboard-----//
 //------------balls/strikes/change of inning/controls------//
-  function out(s,f,b,o) {
+  function out(s,b,o) {
     let gamelogScroll = document.getElementById('gamelog-scroll')
     if (store.live_game.outs === 3) {
       pByp = document.createElement('i')
@@ -312,19 +311,18 @@ document.addEventListener('DOMContentLoaded', function(){
       store.live_game.balls = 0
       store.live_game.outs = 0
 
-      displayStats(s,f,b,o)
+      displayStats(s,b,o)
     }else{
       store.live_game.strikes = 0
       store.live_game.foul_balls = 0
       store.live_game.balls = 0
 
-      displayStats(s,f,b,o)
+      displayStats(s,b,o)
     }
   }
 
-  function displayStats(s,f,b,o){
+  function displayStats(s,b,o){
     s.innerText = `Strikes: ${store.live_game.strikes}`
-    f.innerText = `Foul Balls: ${store.live_game.foul_balls}`
     b.innerText = `Balls: ${store.live_game.balls}`
     o.innerText =`Outs: ${store.live_game.outs}`
   }

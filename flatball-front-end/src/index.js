@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function(){
           walk()
           out(s,f,b,o)
         }else {
-          displayStats(s,f,b,o)
+          displayStats(s,b,o)
         }
         // alert(`Ball ${store.live_game.balls}`)
       break;
@@ -235,9 +235,7 @@ document.addEventListener('DOMContentLoaded', function(){
         gamelogScroll.append(pByp)
         if (store.live_game.strikes < 2){
           store.live_game.strikes += 1
-          displayStats(s,f,b,o)
-        }else{
-          displayStats(s,f,b,o)
+          displayStats(s,b,o)
         }
       // alert(`Foul Ball! That's Strike ${store.live_game.strikes}`)
       break;
@@ -312,19 +310,18 @@ document.addEventListener('DOMContentLoaded', function(){
       store.live_game.balls = 0
       store.live_game.outs = 0
 
-      displayStats(s,f,b,o)
+      displayStats(s,b,o)
     }else{
       store.live_game.strikes = 0
       store.live_game.foul_balls = 0
       store.live_game.balls = 0
 
-      displayStats(s,f,b,o)
+      displayStats(s,b,o)
     }
   }
 
-  function displayStats(s,f,b,o){
+  function displayStats(s,b,o){
     s.innerText = `Strikes: ${store.live_game.strikes}`
-    f.innerText = `Foul Balls: ${store.live_game.foul_balls}`
     b.innerText = `Balls: ${store.live_game.balls}`
     o.innerText =`Outs: ${store.live_game.outs}`
   }

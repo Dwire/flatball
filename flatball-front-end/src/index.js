@@ -235,11 +235,9 @@ document.addEventListener('DOMContentLoaded', function(){
         if (store.live_game.strikes < 2){
           store.live_game.strikes += 1
           displayStats(s,b,o)
-<<<<<<< HEAD
-=======
+
         }else{
           displayStats(s,b,o)
->>>>>>> playingWithCss
         }
       // alert(`Foul Ball! That's Strike ${store.live_game.strikes}`)
       break;
@@ -343,32 +341,32 @@ document.addEventListener('DOMContentLoaded', function(){
       case 0:
       case 1:
       case 2:
-          inning = "Top of the First";
+          inning = "Top 1st";
           break;
       case 3:
       case 4:
       case 5:
-          inning = "Bottom of the First";
+          inning = "Bottom 1st";
           break;
       case 6:
       case 7:
       case 8:
-          inning = "Top of the Second";
+          inning = "Top 2nd";
           break;
       case 9:
       case 10:
       case 11:
-          inning = "Bottom of the Second";
+          inning = "Bottom 2nd";
           break;
       case 12:
       case 13:
       case 14:
-          inning = "Top of the Third";
+          inning = "Top 3rd";
           break;
       case 15:
       case 16:
       case 17:
-          inning = "Bottom of the Third";
+          inning = "Bottom 3rd";
           break;
   }
     return inning

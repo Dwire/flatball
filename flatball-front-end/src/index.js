@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function(){
       pByp.innerHTML = "<hr>Final Out of The Inning Recorded - Switch Controls<hr><br><br>"
       gamelogScroll.append(pByp)
       alert('3 Outs SWITCH Controllers')
-      document.getElementById("inning").innerText = `Inning: ${inningCount()}`
+      document.getElementById("inning").innerText = `${inningCount()}`
       store.live_game.bases = emptyBases
 
       if (store.live_game.home){

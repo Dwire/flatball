@@ -225,6 +225,9 @@ background: repeating-linear-gradient(
   margin-right: auto;
   margin-left: auto;
   width: 800px;
+  text-align:-webkit-center;
+  background-color: burlywood;
+  border: 8px solid black;
 }
 
 .box p{

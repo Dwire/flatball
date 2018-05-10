@@ -6,8 +6,7 @@
     field.setAttribute('class', 'perspective')
     field.innerHTML = `
       <br>
-      <br>
-      <hr>
+
       <!-- <div class="perspective"> -->
 
         <div id="entire-scoreboard">

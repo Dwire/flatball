@@ -18,6 +18,35 @@ document.addEventListener('DOMContentLoaded', function(){
   appBody.addEventListener('keydown', contactPressHandler)
   appBody.addEventListener('keydown', powerPressHandler)
 
+  function contactHandler() {
+    if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
+      alert(`You can't hit until the Pitcher selects their pitch`)
+    }else{
+      console.log(currentPlay)
+      currentPlay.push({bat: "contact"})
+    }if (currentPlay.length === 2){
+      executePlay()
+      currentPlay = []
+    }
+  }
+  //Handler for the Batter's Power Hit
+  function powerHandler() {
+    if (event.which === 80) {
+      event.preventDefault()
+      bPower.click()
+    }
+    if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
+      alert(`You can't hit until the Pitcher selects their pitch`)
+    }else{
+      console.log(currentPlay)
+      currentPlay.push({bat: "power"})
+    }if (currentPlay.length === 2){
+      executePlay()
+      currentPlay = []
+    }
+  }
+
+
   function contactPressHandler(){
     if (event.which === 75) {
       bHit.click
@@ -49,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 
+    let currentPlay = []
 
   //pitcher's controller events
   pSpecial.addEventListener('click', spHandler)
@@ -91,57 +121,6 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   }
 
-  // function contactPressHandler(){
-  //   if (event.which === 79) {
-  //     event.preventDefault()
-  //     bHit.click
-  //     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
-  //       alert(`You can't hit until the Pitcher selects their pitch`)
-  //     }else{
-  //       console.log(currentPlay)
-  //       currentPlay.push({bat: "contact"})
-  //     }if (currentPlay.length === 2){
-  //       executePlay()
-  //       currentPlay = []
-  //     }
-  //   }
-  // }
-
-
-
-
-
-  //Array for the current play in action//
-  let currentPlay = []
-  //THE HANFLERS FOR THE PITCHER & BATTER CONTROLLERS//
-  //Handler for the Batter's Contact Hit//
-  function contactHandler() {
-    if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
-      alert(`You can't hit until the Pitcher selects their pitch`)
-    }else{
-      console.log(currentPlay)
-      currentPlay.push({bat: "contact"})
-    }if (currentPlay.length === 2){
-      executePlay()
-      currentPlay = []
-    }
-  }
-  //Handler for the Batter's Power Hit
-  function powerHandler() {
-    if (event.which === 80) {
-      event.preventDefault()
-      bPower.click()
-    }
-    if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
-      alert(`You can't hit until the Pitcher selects their pitch`)
-    }else{
-      console.log(currentPlay)
-      currentPlay.push({bat: "power"})
-    }if (currentPlay.length === 2){
-      executePlay()
-      currentPlay = []
-    }
-  }
   //Handler for the Pitcher's FastBall Pitch
   function fbHandler() {
     console.log('The button being pressed is', event.which)
@@ -177,6 +156,9 @@ document.addEventListener('DOMContentLoaded', function(){
       currentPlay = []
     }
   }
+
+
+
 
 //------------------------- Above should be seperated ----------------------------------
 

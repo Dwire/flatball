@@ -158,6 +158,24 @@ background: repeating-linear-gradient(
   transform:rotate(-90deg);
 }
 
+#field-inner {
+  color: #994d00;
+  float: right;
+  margin-right: 18%;
+  margin-top: 30%;
+  transform: rotate(45deg);
+  text-align: right;
+  z-index: 10;
+}
+
+#outfield-text {
+  text-align: center;
+  min-width: 240px;
+  padding: 10px 20px 10px 20px;
+  background-color: #004d00;
+  font-weight: bold;
+}
+
 /*Set up of Grid of Our Scoreboard*/
 #entire-scoreboard {
   display: grid;
@@ -169,7 +187,7 @@ background: repeating-linear-gradient(
   border-radius: 2pc;
   margin-left: 300px;
   margin-right: 300px;
-  background-color: green;
+  background-color: #004d00;
   /* margin-bottom: 0px; */
 }
 
@@ -212,7 +230,7 @@ background: repeating-linear-gradient(
   border:8px solid white;
   margin: 3px;
   padding: 0px;
-  background-color: green;
+  background-color: #004d00;
   text-align: -webkit-center;
 }
 
@@ -221,7 +239,7 @@ background: repeating-linear-gradient(
   border:8px solid white;
   padding: 0px;
   margin: 3px;
-  background-color: green;
+  background-color: #004d00;
   text-align: -webkit-center;
 }
 
@@ -260,7 +278,7 @@ background: repeating-linear-gradient(
  padding-left: 15px;
  padding-right: 15px;
  margin: 0px;
- background-color: green;
+ background-color: #004d00;
  margin-top: 3px;
  margin-bottom: 100px;
 }

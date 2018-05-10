@@ -319,8 +319,19 @@ background: repeating-linear-gradient(
   text-shadow: 2px 2px lightblue;
 }
 
+#special-pitch {
+  width: -webkit-fill-available;
+}
 
-button {
+#fastball {
+  width: -webkit-fill-available;
+}
+
+#contact-hit{
+  width: -webkit-fill-available;
+}
+
+#power-hit{
   width: -webkit-fill-available;
 }
 .third {

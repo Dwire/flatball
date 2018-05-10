@@ -5,16 +5,112 @@ document.addEventListener('DOMContentLoaded', function(){
   function playBallHandler () {
     new Game().render()
     appBody.innerHTML = ""
-    alert('GAME ON')
-    appBody.append(fieldName, field, gamelogDiv)
+    // alert('GAME ON')
+    appBody.append(fieldName, field)
   }
+
+
 
   //batter's controller events
   bPower.addEventListener('click', powerHandler)
   bHit.addEventListener('click', contactHandler)
+
+  appBody.addEventListener('keydown', contactPressHandler)
+  appBody.addEventListener('keydown', powerPressHandler)
+
+  function contactPressHandler(){
+    if (event.which === 75) {
+      bHit.click
+      if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
+        alert(`You can't hit until the Pitcher selects their pitch`)
+      }else{
+        console.log(currentPlay)
+        currentPlay.push({bat: "contact"})
+      }if (currentPlay.length === 2){
+        executePlay()
+        currentPlay = []
+      }
+    }
+  }
+  function powerPressHandler() {
+    if (event.which === 76) {
+      bPower.click
+      if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
+        alert(`You can't hit until the Pitcher selects their pitch`)
+      }else{
+        console.log(currentPlay)
+        currentPlay.push({bat: "power"})
+      }if (currentPlay.length === 2){
+        executePlay()
+        currentPlay = []
+      }
+    }
+  }
+
+
+
+
   //pitcher's controller events
   pSpecial.addEventListener('click', spHandler)
   pFastball.addEventListener('click', fbHandler)
+
+  appBody.addEventListener('keydown', spPressHandler)
+  appBody.addEventListener('keydown', fbPressHandler)
+
+  function fbPressHandler(){
+    if (event.which === 65) {
+      console.log("Button being pressed")
+      pFastball.click
+      if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
+        alert('You already have your pitch selected, waiting for the Batter to swing')
+      }else{
+        console.log(currentPlay)
+        currentPlay.push({pitch: "fastball"})
+      }if (currentPlay.length === 2){
+        executePlay()
+        currentPlay = []
+      }
+    }
+    console.log("Event coming through")
+  }
+
+  function spPressHandler(){
+    if (event.which === 83){
+      console.log("Button being pressed")
+      pSpecial.click
+      console.log("Event coming through")
+      if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
+        alert('You already have your pitch selected, waiting for the Batter to swing')
+      }else{
+        console.log(currentPlay)
+        currentPlay.push({pitch: "sp"})
+      }if (currentPlay.length === 2){
+        executePlay()
+        currentPlay = []
+      }
+    }
+  }
+
+  // function contactPressHandler(){
+  //   if (event.which === 79) {
+  //     event.preventDefault()
+  //     bHit.click
+  //     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
+  //       alert(`You can't hit until the Pitcher selects their pitch`)
+  //     }else{
+  //       console.log(currentPlay)
+  //       currentPlay.push({bat: "contact"})
+  //     }if (currentPlay.length === 2){
+  //       executePlay()
+  //       currentPlay = []
+  //     }
+  //   }
+  // }
+
+
+
+
+
   //Array for the current play in action//
   let currentPlay = []
   //THE HANFLERS FOR THE PITCHER & BATTER CONTROLLERS//
@@ -23,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
       alert(`You can't hit until the Pitcher selects their pitch`)
     }else{
+      console.log(currentPlay)
       currentPlay.push({bat: "contact"})
     }if (currentPlay.length === 2){
       executePlay()
@@ -31,9 +128,14 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   //Handler for the Batter's Power Hit
   function powerHandler() {
+    if (event.which === 80) {
+      event.preventDefault()
+      bPower.click()
+    }
     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
       alert(`You can't hit until the Pitcher selects their pitch`)
     }else{
+      console.log(currentPlay)
       currentPlay.push({bat: "power"})
     }if (currentPlay.length === 2){
       executePlay()
@@ -42,9 +144,17 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   //Handler for the Pitcher's FastBall Pitch
   function fbHandler() {
+    console.log('The button being pressed is', event.which)
+    if (event.which === 82) {
+      event.preventDefault()
+      console.log("Button being pressed")
+      pFastball.click()
+    }
+    console.log("Event coming through")
     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
       alert('You already have your pitch selected, waiting for the Batter to swing')
     }else{
+      console.log(currentPlay)
       currentPlay.push({pitch: "fastball"})
     }if (currentPlay.length === 2){
       executePlay()
@@ -53,9 +163,14 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   //Handler for the Pitcher's Special Pitch
   function spHandler() {
+    if (event.which === 87) {
+      event.preventDefault()
+      pSpecial.click()
+    }
     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
       alert('You already have your pitch selected, waiting for the Batter to swing')
     }else{
+      console.log(currentPlay)
       currentPlay.push({pitch: "sp"})
     }if (currentPlay.length === 2){
       executePlay()

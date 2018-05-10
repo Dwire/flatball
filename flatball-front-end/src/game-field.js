@@ -1,8 +1,8 @@
 //---------------Baseball Field ----------------------------//
-  fieldName = document.createElement('h1')
+  const fieldName = document.createElement('h1')
   fieldName.setAttribute('id', 'field-name')
   fieldName.innerText = "Coders Field - Flatiron District, NYC"
-  field = document.createElement('div')
+  const field = document.createElement('div')
   field.setAttribute('class', 'perspective')
   field.innerHTML = `
     <br>
@@ -55,9 +55,17 @@
 
 //---------------------- Stats Top of Field ------------------------------------
 
-const gamelogDiv = document.createElement('div')
-  gamelogDiv.setAttribute('id', 'gamelog')
-  gamelogDiv.innerHTML = `<h1>Game Log</h1><div id="gamelog-scroll"></div><br><br>`
+const dropContainer = document.createElement('div')
+dropContainer.setAttribute('id', 'drop-container')
+const dropDown = document.createElement('div')
+dropDown.setAttribute("class","dropdown")
+dropDown.innerHTML = `<br><span id="dropTitle">Play-By-Play</span>
+  <div class="dropdown-content">
+    <div id=gamelog-container><p id="gamelog-scroll"></p></div>`
+dropContainer.append(dropDown)
+fieldName.append(dropContainer)
+
+
 
 
 //---------------------- Controls Bottom of Field ------------------------------

@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function executePlay (){
     randPlay = Math.floor(Math.random()*15) + 1
-    // randPlay = 8
+    // randPlay = 1
     // b = ball s = strike f = foul ball o = out //
     const s = document.getElementById('strikes')
     const b = document.getElementById('balls')
@@ -169,6 +169,7 @@ document.addEventListener('DOMContentLoaded', function(){
         if (store.live_game.strikes === 3) {
           playCall('Strike Out!')
           store.live_game.outs += 1
+          store.game_stats.out_count += 1
           out(s,b,o)
         }else{
           playCall('Strike')
@@ -258,13 +259,14 @@ document.addEventListener('DOMContentLoaded', function(){
 
 //------------balls/strikes/change of inning/controls------//
   function out(s,b,o) {
-    let gamelogScroll = document.getElementById('gamelog-scroll')
+    // let gamelogScroll = document.getElementById('gamelog-scroll')
     if (store.live_game.outs === 3) {
       // pByp = document.createElement('i')
       // pByp.innerHTML = "<hr>Final Out of The Inning Recorded - Switch Controls<hr><br><br>"
       // gamelogScroll.append(pByp)
       // alert('3 Outs SWITCH Controllers')
-      document.getElementById("inning").innerText = `${inningCount()}`
+      const test = document.getElementById("inning").innerText = `${inningCount()}`
+
       store.live_game.bases = emptyBases
 
       if (store.live_game.home){
@@ -299,44 +301,44 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 //---Inning function to track and count what inning it is using cases---//
-  function inningCount() {
-    let outCount = store.game_stats.out_count
-    // let outCount = 9
-    let inning = ""
-
-    switch (outCount) {
-      case 0:
-      case 1:
-      case 2:
-          inning = "Top 1st";
-          break;
-      case 3:
-      case 4:
-      case 5:
-          inning = "Bottom 1st";
-          break;
-      case 6:
-      case 7:
-      case 8:
-          inning = "Top 2nd";
-          break;
-      case 9:
-      case 10:
-      case 11:
-          inning = "Bottom 2nd";
-          break;
-      case 12:
-      case 13:
-      case 14:
-          inning = "Top 3rd";
-          break;
-      case 15:
-      case 16:
-      case 17:
-          inning = "Bottom 3rd";
-          break;
-  }
-    return inning
-  }
+  // function inningCount() {
+  //   let outCount = store.game_stats.out_count
+  //   // let outCount = 9
+  //   let inning = ""
+  //
+  //   switch (outCount) {
+  //     case 0:
+  //     case 1:
+  //     case 2:
+  //         inning = "Top 1st";
+  //         break;
+  //     case 3:
+  //     case 4:
+  //     case 5:
+  //         inning = "Bottom 1st";
+  //         break;
+  //     case 6:
+  //     case 7:
+  //     case 8:
+  //         inning = "Top 2nd";
+  //         break;
+  //     case 9:
+  //     case 10:
+  //     case 11:
+  //         inning = "Bottom 2nd";
+  //         break;
+  //     case 12:
+  //     case 13:
+  //     case 14:
+  //         inning = "Top 3rd";
+  //         break;
+  //     case 15:
+  //     case 16:
+  //     case 17:
+  //         inning = "Bottom 3rd";
+  //         break;
+  // }
+  //   return inning
+  // }
 
 })

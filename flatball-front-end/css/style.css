@@ -361,9 +361,10 @@ background: repeating-linear-gradient(
   width: -webkit-fill-available;
 }
 
-.perspective {
+/* .perspective {
   max-height: 900px;
-}
+} */
+
 .third {
   left:-.5vw;
   top:-.5vw;

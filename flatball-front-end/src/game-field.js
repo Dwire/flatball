@@ -14,7 +14,7 @@
         <div class="box 1"id="home"> <h3 id="home-sb">Home Score<h4 id="home-score">${store.game_stats.home_score}</h4></h3></div>
 
         <div class="box 2" id="scoreboard-inningDeets-container">
-          <h4 id="inning"> </h4>
+          <h4 id="inning">${inningCount()} </h4>
         <div id="sbo"><p id="strikes">Strikes: ${store.live_game.strikes}</p><br>
           <p id="balls">Balls: ${store.live_game.balls}</p><br>
           <p id="outs">Outs: ${store.live_game.outs}</p></div>
@@ -58,23 +58,6 @@
 const gamelogDiv = document.createElement('div')
   gamelogDiv.setAttribute('id', 'gamelog')
   gamelogDiv.innerHTML = `<h1>Game Log</h1><div id="gamelog-scroll"></div><br><br>`
-const homeScoreDiv = document.createElement('div')
-  homeScoreDiv.setAttribute('id', 'home-score-div')
-  homeScoreDiv.innerHTML = `<h1>Home Score</h1>
-  <p id="home-score">${store.game_stats.home_score}</p>`
-const awayScoreDiv = document.createElement('div')
-  awayScoreDiv.setAttribute('id', 'away-score-div')
-  awayScoreDiv.innerHTML = `<h1>Away Score</h1>
-  <p id=away-score>${store.game_stats.away_score}</p>`
-const inningDetailsDiv = document.createElement('div')
-  inningDetailsDiv.setAttribute('id', 'inningDetailsDiv')
-// let current_inning = inningCount()
-  inningDetailsDiv.innerHTML = `<div><h1 id="inning">Inning: ${inningCount()} </h1></div>
-  <div id="strikes">Strikes: ${store.live_game.strikes}</div><br>
-  <div id="balls">Balls: ${store.live_game.balls}</div><br>
-  <div id="fouls">Foul Balls: ${store.live_game.foul_balls}</div><br>
-  <div id="outs">Outs: ${store.live_game.outs}</div>`
-//end//
 
 
 //---------------------- Controls Bottom of Field ------------------------------

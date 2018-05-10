@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function(){
     alert('GAME ON')
     appBody.append(fieldName, field, gamelogDiv)
   }
-  
+
   //batter's controller events
   bPower.addEventListener('click', powerHandler)
   bHit.addEventListener('click', contactHandler)

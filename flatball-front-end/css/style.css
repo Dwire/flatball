@@ -225,23 +225,6 @@ background: repeating-linear-gradient(
   color: black;
 }
 
-/*Away Title*/
-#away{
-  border:8px solid white;
-  margin: 3px;
-  padding: 0px;
-  background-color: #004d00;
-  text-align: -webkit-center;
-}
-
-/*Home Title*/
-#home{
-  border:8px solid white;
-  padding: 0px;
-  margin: 3px;
-  background-color: #004d00;
-  text-align: -webkit-center;
-}
 
 /*Game Log Scroll specifications*/
 #gamelog-scroll{
@@ -274,57 +257,82 @@ background: repeating-linear-gradient(
 
 /*Strikes Balls Outs container set up*/
 #scoreboard-inningDeets-container{
- border:8px solid white;
- padding-left: 15px;
- padding-right: 15px;
+ border: 5px solid white;
+ /* padding-left: 15px;
+ padding-right: 15px; */
  margin: 0px;
  background-color: #004d00;
  margin-top: 3px;
- margin-bottom: 100px;
+ margin-bottom: 15px;
 }
 
 /*Inning Title*/
 #inning{
-  border: 5px solid white;
-  padding: 5px;
-  text-align:-webkit-center
+  border-bottom: 3px solid white;
+  text-align:-webkit-center;
 }
 
 /*Strikes Balls Outs specifically Container set up*/
 #sbo{
-  border:2px solid white;
-  padding: 10px;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
+  padding: 20px;
   margin-bottom: 20px;
 }
 
 
-/*Home's run container*/
-#home-sb{
-  border: 5px solid white;
-  padding: 5px
+
+/*Away Title*/
+#away{
+  border:5px solid white;
+  margin: 3px;
+  padding: 0px;
+  background-color: #004d00;
+  text-align: -webkit-center;
 }
 
-/*Home's title container*/
-#home-score{
-  border: 5px solid white;
-  padding: 5px;
-  font-size: 50px;
-  text-align:-webkit-center;
+/*Home Title*/
+#home{
+  border:5px solid white;
+  padding: 0px;
+  margin: 3px;
+  background-color: #004d00;
+  text-align: -webkit-center;
+}
+
+/*Home's run container*/
+#home-sb{
+  border-bottom: 3px solid white;
+  margin-bottom: 0px;
+  padding: 0px 7px 0px 7px;
 }
 
 /*Away's Runs container*/
 #away-sb{
-  border: 5px solid white;
-  padding: 5px
+  border-bottom: 3px solid white;
+  margin-bottom: 0px;
+  padding: 0px 7px 0px 7px;
 }
 
 
-/*Away's title container*/
-#away-score{
-  border: 5px solid white;
+/*Home's title container*/
+#home-score{
+  margin: 40px 0px 0px 0px;
   padding: 5px;
   font-size: 50px;
-  text-align:-webkit-center;
+  text-align: -webkit-center;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white
+}
+
+/*Away's title container*/
+#away-score{
+  margin: 40px 0px 0px 0px;
+  padding: 5px;
+  font-size: 50px;
+  text-align: -webkit-center;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white
 }
 
 /*Field Name Container*/
@@ -337,8 +345,19 @@ background: repeating-linear-gradient(
   text-shadow: 2px 2px lightblue;
 }
 
+#special-pitch {
+  width: -webkit-fill-available;
+}
 
-button {
+#fastball {
+  width: -webkit-fill-available;
+}
+
+#contact-hit{
+  width: -webkit-fill-available;
+}
+
+#power-hit{
   width: -webkit-fill-available;
 }
 .third {

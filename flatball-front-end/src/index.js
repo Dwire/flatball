@@ -165,6 +165,30 @@ document.addEventListener('DOMContentLoaded', function(){
 
   const emptyBases = [0,0,0,0]
 
+  function showBases() {
+    const first = document.querySelector('.first')
+    const second = document.querySelector('.second')
+    const third = document.querySelector('.third')
+
+    const bases = store.live_game.bases
+
+    bases.forEach((base, index) => {
+      if (base && index === 0) {
+        first.id = "first-b"
+      }if (!base && index === 0){
+        first.id = "off"
+      }if (base && index === 1) {
+        second.id = "second-b"
+      }if (!base && index === 0){
+        second.id = "off"
+      }if (base && index === 2) {
+        third.id = "third-b"
+      }if (!base && index === 0){
+        third.id = "off"
+      }
+    })
+  }
+
   var walk = function(){
    var baseStatus = store.live_game.bases
 
@@ -183,7 +207,6 @@ document.addEventListener('DOMContentLoaded', function(){
    var baseStatus = store.live_game.bases
    var score = 0
    var outNum = outerNum - 1
-   // var baseStatus = [1,1,1,0]
 
     return function looper(innerNum){
       var inNum = innerNum
@@ -198,16 +221,11 @@ document.addEventListener('DOMContentLoaded', function(){
           baseStatus[i] = baseStatus[i - 1]
           baseStatus[i - 1] = 0
         }
-        // teamScore(score)
       }
-
-      console.log(baseStatus)
-      console.log(score)
 
       outNum
       inNum -= 1
       if (inNum > 0){
-        // baseRunning(inNum)
         looper(inNum)
       }else{
         store.live_game.bases = baseStatus
@@ -227,6 +245,7 @@ document.addEventListener('DOMContentLoaded', function(){
       teamScore(lastInd)
       store.live_game.bases.splice(3, 1, 0)
     }
+    showBases()
   }
   //helper function used to add score and update our scoreboard live to the correct team//
   function teamScore(num){
@@ -367,10 +386,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function out(s,b,o) {
     // let gamelogScroll = document.getElementById('gamelog-scroll')
     if (store.live_game.outs === 3) {
-      // pByp = document.createElement('i')
-      // pByp.innerHTML = "<hr>Final Out of The Inning Recorded - Switch Controls<hr><br><br>"
-      // gamelogScroll.append(pByp)
-      // alert('3 Outs SWITCH Controllers')
+
       const test = document.getElementById("inning").innerText = `${inningCount()}`
 
       store.live_game.bases = emptyBases
@@ -395,6 +411,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
       displayStats(s,b,o)
     }
+
+    gameOver()
   }
 
   function displayStats(s,b,o){
@@ -403,5 +421,27 @@ document.addEventListener('DOMContentLoaded', function(){
     o.innerText =`Outs: ${store.live_game.outs}`
   }
   // end --- display and reseting balls/strikes/change of inning/controls---//
+  function gameOver() {
+    const outs = store.game_stats.out_count
+
+    const screen = document.querySelector('body')
+    const winner = document.createElement('h1')
+      winner.id = "winner-name"
+      winner.innerText = "WINNER!"
+    const can = document.createElement('canvas')
+      can.id = "canvas"
+
+    if (outs >= 3) {
+      screen.innerHTML = ""
+      screen.append(winner)
+      screen.append(can)
+
+    }
+  }
 
 })
+
+// <div id="Winner">
+//   <h1 id=winner-name>Happy Birthday!</h1>
+//   <canvas id="canvas"></canvas>
+// </div>

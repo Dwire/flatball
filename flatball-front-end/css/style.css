@@ -4,24 +4,23 @@
   max-height: 1000px;
   /* color:black; */
   border: 2px solid black;
-  border-radius: 3%;}
+  border-radius: 3%;
+}
 
 
 .field {
-  position:relative;
-  height: 37vw;
-  width: 37vw;
-  margin:1vw auto;
-  background:#004d00;
-  border-radius:5%;
-  border-bottom-left-radius:10%;
-  border-top-right-radius:70%;
-  border:2vw solid #994d00;
-  transform:
-    rotate(-45deg);
-  overflow:hidden;
+  position: relative;
+  height: 480px;
+  width: 480px;
+  margin: 1vw auto;
+  background: #004d00;
+  border-radius: 5%;
+  border-bottom-left-radius: 10%;
+  border-top-right-radius: 70%;
+  border: 2vw solid #994d00;
+  transform: rotate(-45deg);
+  overflow: hidden;
 }
-
 
 .field{
 background: repeating-linear-gradient(
@@ -55,22 +54,22 @@ background: repeating-linear-gradient(
   opacity:.6;
 }
 .infield {
-  position:absolute;
-  height:20vw;
-  width:20vw;
-  background-color:#994d00;
-  left:4vw;
-  bottom:4vw;
-  border-top-right-radius:75%;
-  z-index:2;
+  position: absolute;
+  height: 240px;
+  width: 240px;
+  background-color: #994d00;
+  left: 4vw;
+  bottom: 4vw;
+  border-top-right-radius: 75%;
+  z-index: 2;
 }
 .infield-inner {
-  background:#004d00;
-  height:11vw;
-  width:11vw;
-  bottom:1vw;
-  left:1vw;
-  position:absolute;
+  background: #004d00;
+  height: 130px;
+  width: 130px;
+  bottom: 1vw;
+  left: 1vw;
+  position: absolute;
 }
 .stripes .infield-inner {
   background: repeating-linear-gradient(
@@ -83,13 +82,13 @@ background: repeating-linear-gradient(
 }
 
 .home {
-  width:5vw;
-  height:5vw;
-  border-radius:50%;
-  background:#994d00;
-  position:absolute;
-  left:-2.5vw;
-  bottom:-2.5vw;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #994d00;
+  position: absolute;
+  left: -2.5vw;
+  bottom: -2.5vw;
 }
 
 .plate {
@@ -116,13 +115,13 @@ background: repeating-linear-gradient(
 }
 
 .pitchers-mound {
-  width:3vw;
-  height:3vw;
-  border-radius:50%;
-  background:#994d00;
-  position:absolute;
-  left:calc(50% - 1.5vw);
-  bottom:calc(50% - 1.5vw);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #994d00;
+  position: absolute;
+  left: calc(50% - 1.5vw);
+  bottom: calc(50% - 1.5vw);
 }
 .pitchers-mound:after {
   width:1vw;
@@ -146,13 +145,24 @@ background: repeating-linear-gradient(
   bottom:-.6vw;}
 
 .first:after, .second:after, .third:after {
-  background:#fff;
-  content:" ";
-  width:2.5vw;
-  height:2.5vw;
-  position:absolute;
-  bottom:0;
-  right:0;}
+  background: #fff;
+  content: " ";
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+#first-b:after, #second-b:after, #third-b:after {
+  background: yellow;
+  content: " ";
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
 
 .second {
   top:-.5vw;
@@ -162,8 +172,8 @@ background: repeating-linear-gradient(
 #field-inner {
   color: #994d00;
   float: right;
-  margin-right: 18%;
-  margin-top: 30%;
+  margin-right: 11%;
+  margin-top: 29%;
   transform: rotate(45deg);
   text-align: right;
   z-index: 10;
@@ -385,6 +395,14 @@ background: repeating-linear-gradient(
   border: 2px solid black;
   padding: 2px;
   border-radius: 1pc;
+}
+
+#perspective-p {
+  background: white;
+  max-height: 1000px;
+  /* color:black; */
+  border: 2px solid black;
+  border-radius: 3%;
 }
 
 .third {

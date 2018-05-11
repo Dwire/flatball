@@ -28,7 +28,7 @@ class Api::V1::GamesController < ApplicationController
 
   private
   def game_params
-    params.permit(:name)
+    params.permit(:home_score, :away_score, :out_count)
   end
 
   def set_game

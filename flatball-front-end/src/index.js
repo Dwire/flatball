@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(){
 
+  GameAdapter.getGame()
   // Play Ball button click functionality [renders a new game JS object and clears the page] //
   newGameButton.addEventListener('click', playBallHandler)
   function playBallHandler () {
@@ -22,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function(){
     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
       alert(`You can't hit until the Pitcher selects their pitch`)
     }else{
-      console.log(currentPlay)
       currentPlay.push({bat: "contact"})
     }if (currentPlay.length === 2){
       executePlay()
@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function(){
     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
       alert(`You can't hit until the Pitcher selects their pitch`)
     }else{
-      console.log(currentPlay)
       currentPlay.push({bat: "power"})
     }if (currentPlay.length === 2){
       executePlay()
@@ -53,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function(){
       if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
         alert(`You can't hit until the Pitcher selects their pitch`)
       }else{
-        console.log(currentPlay)
         currentPlay.push({bat: "contact"})
       }if (currentPlay.length === 2){
         executePlay()
@@ -67,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function(){
       if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('bat')){
         alert(`You can't hit until the Pitcher selects their pitch`)
       }else{
-        console.log(currentPlay)
         currentPlay.push({bat: "power"})
       }if (currentPlay.length === 2){
         executePlay()
@@ -89,30 +86,24 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function fbPressHandler(){
     if (event.which === 65) {
-      console.log("Button being pressed")
       pFastball.click
       if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
         alert('You already have your pitch selected, waiting for the Batter to swing')
       }else{
-        console.log(currentPlay)
         currentPlay.push({pitch: "fastball"})
       }if (currentPlay.length === 2){
         executePlay()
         currentPlay = []
       }
     }
-    console.log("Event coming through")
   }
 
   function spPressHandler(){
     if (event.which === 83){
-      console.log("Button being pressed")
       pSpecial.click
-      console.log("Event coming through")
       if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
         alert('You already have your pitch selected, waiting for the Batter to swing')
       }else{
-        console.log(currentPlay)
         currentPlay.push({pitch: "sp"})
       }if (currentPlay.length === 2){
         executePlay()
@@ -123,17 +114,13 @@ document.addEventListener('DOMContentLoaded', function(){
 
   //Handler for the Pitcher's FastBall Pitch
   function fbHandler() {
-    console.log('The button being pressed is', event.which)
     if (event.which === 82) {
       event.preventDefault()
-      console.log("Button being pressed")
       pFastball.click()
     }
-    console.log("Event coming through")
     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
       alert('You already have your pitch selected, waiting for the Batter to swing')
     }else{
-      console.log(currentPlay)
       currentPlay.push({pitch: "fastball"})
     }if (currentPlay.length === 2){
       executePlay()
@@ -149,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function(){
     if (currentPlay.length > 0 &&  Object.keys(currentPlay[0]).includes('pitch')){
       alert('You already have your pitch selected, waiting for the Batter to swing')
     }else{
-      console.log(currentPlay)
       currentPlay.push({pitch: "sp"})
     }if (currentPlay.length === 2){
       executePlay()
@@ -229,7 +215,6 @@ document.addEventListener('DOMContentLoaded', function(){
         looper(inNum)
       }else{
         store.live_game.bases = baseStatus
-        console.log(`bases = ${baseStatus} and Score = ${score}`);
         teamScore(score)
         cleanScore(outNum)
       }
@@ -258,7 +243,6 @@ document.addEventListener('DOMContentLoaded', function(){
       playCall("Run Scored!")
       document.querySelector('#away-score').innerText = store.game_stats.away_score
     }
-    console.log(store.game_stats);
   }
 
 
@@ -359,7 +343,6 @@ document.addEventListener('DOMContentLoaded', function(){
         out(s,b,o)
       break;
     }
-    console.log(store.live_game)
   }
   function playByplay(hit) {
     let gamelogScroll = document.getElementById('gamelog-scroll')
@@ -422,19 +405,28 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   // end --- display and reseting balls/strikes/change of inning/controls---//
   function gameOver() {
-    const outs = store.game_stats.out_count
+    // const gameObj = store.game_stats
+    let obj = {
+      home_score: store.game_stats.away_score,
+      away_score: store.game_stats.home_score,
+      out_count: store.game_stats.out_count
+    }
 
+    const outs = store.game_stats.out_count
     const screen = document.querySelector('body')
-    const winner = document.createElement('h1')
-      winner.id = "winner-name"
-      winner.innerText = "WINNER!"
-    const can = document.createElement('canvas')
-      can.id = "canvas"
 
     if (outs >= 3) {
-      screen.innerHTML = ""
-      screen.append(winner)
-      screen.append(can)
+      GameAdapter.postGame(obj)
+      console.log(obj);
+      // screen.innerHTML = ""
+      //
+      // screen.innerHTML = `
+      //   <h1 id="winner-name">WINNER!!</h1>
+      //   <canvas id="canvas"></canvas>
+      //   <script type="text/javascript" src="src/winner.js"></script>
+      //  `
+      // screen.append(winner)
+      // screen.append(can)
 
     }
   }

@@ -34,7 +34,7 @@ background: repeating-linear-gradient(
 
 
 .right-field-line {
-  height:47.6vw;
+  height:34.6vw;
   width:1px;
   background:#fff;
   position:absolute;
@@ -114,6 +114,12 @@ background: repeating-linear-gradient(
 
 }
 
+#hitter{
+  height: 6px;
+  width: 40px;
+  transform:rotate(40deg);
+}
+
 .pitchers-mound {
   width: 40px;
   height: 40px;
@@ -132,6 +138,13 @@ background: repeating-linear-gradient(
   transform:rotate(45deg);
   top:calc(50% - .1vw);
   left:calc(50% - .5vw);
+}
+
+
+#pitcher{
+  height: 30px;
+  width: 40px;
+  transform: rotate(40deg);
 }
 
 .first, .second, .third {
@@ -328,7 +341,7 @@ background: repeating-linear-gradient(
   background-color: burlywood;
   border-radius: 2pc;
   margin: 0px;
-  text-shadow: 2px 2px lightblue;
+  text-shadow: 1px 1px lightblue;
 }
 
 #special-pitch {
@@ -393,8 +406,10 @@ background: repeating-linear-gradient(
 
 #dropTitle{
   border: 2px solid black;
-  padding: 2px;
+  padding: 0px;
   border-radius: 1pc;
+  background: black;
+  color: wheat;
 }
 
 #perspective-p {

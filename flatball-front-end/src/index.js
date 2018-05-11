@@ -236,11 +236,11 @@ document.addEventListener('DOMContentLoaded', function(){
   function teamScore(num){
     if(store.live_game.home){
       store.game_stats.home_score += num
-      playCall("Run Scored!")
+      playCall(`${num} Run Scored!`)
       document.querySelector('#home-score').innerText = store.game_stats.home_score
     }else{
       store.game_stats.away_score += num
-      playCall("Run Scored!")
+      playCall(`${num} Run Scores!`)
       document.querySelector('#away-score').innerText = store.game_stats.away_score
     }
   }
@@ -262,6 +262,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const o = document.getElementById('outs')
     const gamelogScroll = document.getElementById('gamelog-scroll')
 
+
     switch (randPlay) {
       case 1:
       case 2:
@@ -270,6 +271,7 @@ document.addEventListener('DOMContentLoaded', function(){
         store.live_game.strikes += 1
         if (store.live_game.strikes === 3) {
           playCall('Strike Out!')
+          playByplay(`Batter Strikes Out for out #${store.live_game.outs}, dancing at the plate on the final swing and miss`)
           store.live_game.outs += 1
           store.game_stats.out_count += 1
           out(s,b,o)
@@ -284,6 +286,7 @@ document.addEventListener('DOMContentLoaded', function(){
         store.live_game.balls += 1
         if (store.live_game.balls === 4){
           playCall('Ball Four!')
+          playByplay(`Ball Four! Batter Walks!`)
           walk()
           out(s,b,o)
         }else {
@@ -311,6 +314,7 @@ document.addEventListener('DOMContentLoaded', function(){
         store.live_game.outs += 1
         store.game_stats.out_count +=1
         playCall("Out")
+        playByplay(`Batter is OUT on pop-up to shallow right! That is out #${store.live_game.outs} of the inning`)
         out(s,b,o)
       break;
       case 16:
@@ -344,10 +348,10 @@ document.addEventListener('DOMContentLoaded', function(){
       break;
     }
   }
-  function playByplay(hit) {
+  function playByplay(play) {
     let gamelogScroll = document.getElementById('gamelog-scroll')
     pByp = document.createElement('i')
-    pByp.innerHTML = `It's a clutch ${hit}; - New Batter Up<br><br><hr>`
+    pByp.innerHTML = `${inningCount()}<br>ScoreBoard: Home: ${store.game_stats.home_score} Away: ${store.game_stats.away_score}<hr>${play} --- New Batter Up<br><br><hr>`
     gamelogScroll.append(pByp)
   }
 

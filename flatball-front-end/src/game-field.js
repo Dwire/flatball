@@ -1,4 +1,5 @@
 //---------------Baseball Field ----------------------------//
+
   const fieldName = document.createElement('h1')
     fieldName.setAttribute('id', 'field-name')
     fieldName.innerText = "Coders Field - Flatiron District, NYC"
@@ -39,8 +40,9 @@
       <div class="infield">
         <div class="infield-inner">
           <span class="home">
+          <div id="hitter" class="hitter"><img src="http://ih2.redbubble.net/image.12303484.4729/sticker,40x40.png"></div>
+          </span>
             <span class="plate">
-            </span>
           </span>
           <span class="first">
           </span>
@@ -49,6 +51,7 @@
           <span class="third">
           </span>
           <div class="pitchers-mound">
+            <img id="pitcher" src="http://ih0.redbubble.net/image.12303453.4706/sticker,375x360.png">
           </div>
         </div>
       </div>
@@ -61,17 +64,29 @@
   <br>`
 
 //---------------------- Stats Top of Field ------------------------------------
-
 const dropContainer = document.createElement('div')
 dropContainer.setAttribute('id', 'drop-container')
 const dropDown = document.createElement('div')
-dropDown.setAttribute("class","dropdown")
-dropDown.innerHTML = `<br><span id="dropTitle">Play-By-Play</span>
+dropDown.setAttribute("class","dropdown ")
+dropDown.innerHTML = `<br><div id="dropTitle" class="animated infinite pulse">Play-By-Play</div>
   <div class="dropdown-content">
     <div id=gamelog-container><p id="gamelog-scroll"></p></div>`
 dropContainer.append(dropDown)
 fieldName.append(dropContainer)
 
+// const helpContainer = document.createElement('div')
+// helpContainer.setAttribute('id', 'help-container')
+// const hDropDown = document.createElement('div')
+// hDropDown.setAttribute("class","dropdown animated infinite pulse")
+// hDropDown.innerHTML = `<br><span id="helpTitle">Game Helper</span>
+//   <div class="dropdown-content">
+    // <p>All outs are recorded via a strike out or a random outcome</p>
+    // <p> YOU CANNOT GET AN OUT ON A HIT (ex. throwing the runner at 3rd out)</p>
+    // <p>A Single advances all baserunners by 1 base</p>
+    // <p>A Double advances all baserunners by 2 bases</p>
+    // <p>A Triple advances all baserunners by 3 bases</p>
+    // <p>A Homerun scores all current baserunners including the batter</p>`
+// helpContainer.append(hDropDown)
 
 
 
@@ -115,6 +130,7 @@ const bothControllers = document.createElement('div')
 
 
 function inningCount() {
+  // const savedGames = document.getElementById('games-scroll')
   let outCount = store.game_stats.out_count
   // let outCount = 9
   let inning = ""
@@ -148,7 +164,15 @@ function inningCount() {
     case 15:
     case 16:
     case 17:
-        inning = "Bottom 3rd";
+        inning = "Bottom 3rd"
+        break;
+    case 18:
+        alert(`GAME OVER: Final Score: [Home Team: ${store.game_stats.home_score}] [Away Team: ${store.game_stats.away_score}]`)
+        // const gamesList = getElementById('games-list')
+        // game = document.createElement(li)
+        // game.innerText = store.game_stats
+        // savedGames.append(game)
+        // gamesList.append(savedGames)
         break;
 }
   return inning

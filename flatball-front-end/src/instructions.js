@@ -40,7 +40,7 @@ const dropDown1 = document.createElement('div')
 
 const dropDown2 = document.createElement('div')
   dropDown2.setAttribute("class","dropdown")
-  dropDown2.innerHTML = `<br><span class="dropTitles"><h3>Batting Rules & Controls</h3></span>
+  dropDown2.innerHTML = `<br><span class="dropTitles"><h3>Batting Controls</h3></span>
     <div class="dropdown-content">
       <p>- The Batter is given two options: [Hit For Contact] or [Power Hit]</p><p>- [Hit For Contact]: Practical...Safe.. gives the Batter the best chance to land on theirself on base</p><p>- [Power Hit]: We're talking power here so this will most definitely give the Batter the best chance to hit a triple/homerun to deepest part of the parks, but also gives a higher rate to strikeout since we are swinging for the fences here</p>
     </div>
@@ -48,7 +48,7 @@ const dropDown2 = document.createElement('div')
 
 const dropDown3 = document.createElement('div')
   dropDown3.setAttribute("class","dropdown")
-  dropDown3.innerHTML = `<br><span class="dropTitles"><h3>Pitching Rules & Controls</h3></span>
+  dropDown3.innerHTML = `<br><span class="dropTitles"><h3>Pitching Controls</h3></span>
     <div class="dropdown-content">
       <p>- The Pitcher is given two options: [Fastball] or [Special Pitch]</p><p>- [Fastball]: Nothing fancy here just a solid fastball that can either wind up giving you a solid and steady result</p><p>- [Special Pitch]: The name says it all..you throw this mind-bending pitch and you land the best shot at making your opponent dance at the batter's box. However, it also can cause you to serve thr fattest meatball the Flatiron District has seen in recent years, right over the plate for the batter to clobber over the cheap seats.... You Have Been Warned.</p>
     </div>

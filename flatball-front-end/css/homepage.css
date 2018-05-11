@@ -30,6 +30,8 @@
 
 #how-to{
   text-align: -webkit-center;
+  border: 2px solid black;
+  border-radius: 1pc;
 }
 
 #main-welcome{
@@ -38,6 +40,7 @@
   text-shadow: 2px 2px lightblue;
   font-size: 350%;
   text-align: -webkit-center;
+  border-radius: 1pc;
 }
 
 .button{
@@ -109,15 +112,19 @@ img {
 }
 
 #img4{
-  height: 50px;
-  width: 50px;
+  height: 75px;
+  width: 75px;
   margin-right: 5%;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
 }
 
 #img5{
-  height: 50px;
-  width: 50px;
+  height: 75px;
+  width: 75px;
   margin-left: 5%;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
 }
 
 #new-game-button{

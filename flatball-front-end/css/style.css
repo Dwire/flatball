@@ -362,7 +362,7 @@ background: repeating-linear-gradient(
 
 #gamelog-scroll {
   height: 175px;
-  width: 240px;
+  width: 350px;
   overflow: auto;
   border: 8px solid black;
   padding: 2%;
@@ -379,10 +379,10 @@ background: repeating-linear-gradient(
 
 
 .dropdown:hover .dropdown-content {
-    display: block;
-    min-width: 280px;
-    background: wheat;
-    border: 2px solid black
+  display: block;
+  min-width: 400px;
+  background: wheat;
+  border: 2px solid black;
 }
 
 .dropdown-content {

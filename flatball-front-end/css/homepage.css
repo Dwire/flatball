@@ -20,6 +20,7 @@
 }
 .dropTitles{
   text-shadow: 2px 2px lightblue;
+  background: wheat;
   text-align: -webkit-center;
 }
 
@@ -72,19 +73,21 @@
 }
 
 #instructions{
-  border: 50px solid black;
-  background: burlywood;
+  border: 1px solid black;
   border-radius: 1pc;
+  background: rgba(0, 0, 0, 0.7);
+  margin-top: 88px;
 }
 
 #play-game-container{
-  background: black;
+  background:     background: rgba(0, 0, 0, 0.7);
 }
 
 #main-page-div{
  background: black;
  border: 1px solid wheat;
  border-radius: 1pc;
+ background: rgba(0, 0, 0, 0.7);
 }
 #body-div{
   background-image: url(http://kb4images.com/images/baseball-wallpapers/37303235-baseball-wallpapers.jpg);

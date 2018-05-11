@@ -163,7 +163,10 @@ function inningCount() {
     case 15:
     case 16:
     case 17:
-        inning = "Bottom 3rd";
+        inning = "Bottom 3rd"
+        break;
+    case 18:
+        alert(`GAME OVER: Final Score: Home Team: ${store.game_stats.home_score} Away Team: ${store.game_stats.away_score}`);
         break;
 }
   return inning

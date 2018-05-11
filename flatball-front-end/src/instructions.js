@@ -55,7 +55,7 @@ const dropDown3 = document.createElement('div')
   </div>`
   const dropDown4 = document.createElement('div')
     dropDown4.setAttribute("class","dropdown")
-    dropDown4.innerHTML = `<br><span class="dropTitles"><h3>Our "Simplistic" Way of Baseball</h3></span>
+    dropDown4.innerHTML = `<br><span class="dropTitles"><h3>Our "Simplistic" Rendition of Baseball</h3></span>
       <div class="dropdown-content">
       <p>All outs are recorded via a strikeout or an outcome from our play generator</p>
       <p> YOU CANNOT GET AN OUT ON A HIT (ex. throwing the runner at 3rd out, on a single)</p>

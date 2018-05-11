@@ -111,11 +111,13 @@ img {
 #img4{
   height: 50px;
   width: 50px;
+  margin-right: 5%;
 }
 
 #img5{
   height: 50px;
   width: 50px;
+  margin-left: 5%;
 }
 
 #new-game-button{

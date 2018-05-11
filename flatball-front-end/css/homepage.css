@@ -115,7 +115,10 @@ img {
   width: 50px;
 }
 
-
+#new-game-button{
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
 
 
 

@@ -166,14 +166,6 @@ function inningCount() {
     case 17:
         inning = "Bottom 3rd"
         break;
-    case 18:
-        alert(`GAME OVER: Final Score: [Home Team: ${store.game_stats.home_score}] [Away Team: ${store.game_stats.away_score}]`)
-        // const gamesList = getElementById('games-list')
-        // game = document.createElement(li)
-        // game.innerText = store.game_stats
-        // savedGames.append(game)
-        // gamesList.append(savedGames)
-        break;
 }
   return inning
 }

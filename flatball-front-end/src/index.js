@@ -1,6 +1,29 @@
 document.addEventListener('DOMContentLoaded', function(){
 
   GameAdapter.getGame()
+  .then(json => postGameLog(json))
+
+  function postGameLog(json) {
+    const gamesList = document.getElementById('games-scroll')
+
+
+    json.forEach(obj => {
+      const game = document.createElement('li')
+      game.innerText = `Home Score: ${obj.home_score}, Away Score: ${obj.away_score}`
+      gamesList.append(game)
+    })
+
+
+    // gamesList.append(savedGames)
+
+    // gamesList.innerHTML = `
+    //   <li>${json.away_score}${json.home_score}${json.out_count}</li>
+    // `
+    console.log(json);
+  }
+
+
+
   // Play Ball button click functionality [renders a new game JS object and clears the page] //
   newGameButton.addEventListener('click', playBallHandler)
   function playBallHandler () {
@@ -420,7 +443,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
     if (outs >= 18) {
       GameAdapter.postGame(gameObj)
-      console.log(gameObj);
+
+      alert(`GAME OVER: Final Score: [Home Team: ${store.game_stats.home_score}] [Away Team: ${store.game_stats.away_score}]`)
+
       // screen.innerHTML = ""
       //
       // screen.innerHTML = `

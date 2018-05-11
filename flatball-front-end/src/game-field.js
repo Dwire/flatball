@@ -168,9 +168,11 @@ function inningCount() {
         break;
     case 18:
         alert(`GAME OVER: Final Score: [Home Team: ${store.game_stats.home_score}] [Away Team: ${store.game_stats.away_score}]`)
-        // game = document.createElement(p)
+        // const gamesList = getElementById('games-list')
+        // game = document.createElement(li)
         // game.innerText = store.game_stats
         // savedGames.append(game)
+        // gamesList.append(savedGames)
         break;
 }
   return inning

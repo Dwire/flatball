@@ -69,7 +69,7 @@ const dropDown3 = document.createElement('div')
       dropDown5.setAttribute("class","dropdown")
       dropDown5.innerHTML = `<br><span id="dropTitle">Past Games</span>
         <div class="dropdown-content">
-          <div id=savedgames-container><p id="games-scroll"></p></div>`
+          <div id=savedgames-container><p id="games-scroll"><ul id="games-list"></ul></p></div>`
 
   dropDownContainer.append(dropDown5," || ",dropDown1," || ", dropDown2," || ", dropDown3," || ", dropDown4)
   mainPageDiv.append(dropDownContainer)

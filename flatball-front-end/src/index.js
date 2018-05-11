@@ -259,6 +259,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const o = document.getElementById('outs')
     const gamelogScroll = document.getElementById('gamelog-scroll')
 
+
     switch (randPlay) {
       case 1:
       case 2:
@@ -345,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function playByplay(hit) {
     let gamelogScroll = document.getElementById('gamelog-scroll')
     pByp = document.createElement('i')
-    pByp.innerHTML = `It's a clutch ${hit}; - New Batter Up<br><br><hr>`
+    pByp.innerHTML = `${inningCount()}<hr>It's a clutch ${hit}; - New Batter Up<br><br><hr>`
     gamelogScroll.append(pByp)
   }
 

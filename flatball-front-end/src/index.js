@@ -400,6 +400,7 @@ document.addEventListener('DOMContentLoaded', function(){
       const test = document.getElementById("inning").innerText = `${inningCount()}`
 
       store.live_game.bases = emptyBases
+      showBases()
 
       if (store.live_game.home){
         store.live_game.home = false

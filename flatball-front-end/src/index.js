@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function playByplay(play) {
     let gamelogScroll = document.getElementById('gamelog-scroll')
     pByp = document.createElement('i')
-    pByp.innerHTML = `${inningCount()}<hr>${play} --- New Batter Up<br><br><hr>`
+    pByp.innerHTML = `${inningCount()}<br>ScoreBoard: Home: ${store.game_stats.home_score} Away: ${store.game_stats.away_score}<hr>${play} --- New Batter Up<br><br><hr>`
     gamelogScroll.append(pByp)
   }
 

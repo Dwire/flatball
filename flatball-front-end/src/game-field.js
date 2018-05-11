@@ -67,8 +67,8 @@
 const dropContainer = document.createElement('div')
 dropContainer.setAttribute('id', 'drop-container')
 const dropDown = document.createElement('div')
-dropDown.setAttribute("class","dropdown animated infinite pulse")
-dropDown.innerHTML = `<br><span id="dropTitle">Play-By-Play</span>
+dropDown.setAttribute("class","dropdown ")
+dropDown.innerHTML = `<br><div id="dropTitle" class="animated infinite pulse">Play-By-Play</div>
   <div class="dropdown-content">
     <div id=gamelog-container><p id="gamelog-scroll"></p></div>`
 dropContainer.append(dropDown)

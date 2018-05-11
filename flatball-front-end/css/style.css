@@ -17,7 +17,7 @@
   border-radius: 5%;
   border-bottom-left-radius: 10%;
   border-top-right-radius: 70%;
-  border: 2vw solid #994d00;
+  border: 14px solid #994d00;
   transform: rotate(-45deg);
   overflow: hidden;
 }

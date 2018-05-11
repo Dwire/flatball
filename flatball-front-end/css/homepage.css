@@ -130,6 +130,18 @@ img {
 }
 
 
+#games-scroll{
+  height: 175px;
+  width: 240px;
+  overflow: auto;
+  border: 8px solid black;
+  padding: 2%;
+  background-color: lightblue;
+  color: black;
+  font-family: sans-serif;
+  padding: 10px;
+}
+
 
 /*ANIMATION -------------  */
 

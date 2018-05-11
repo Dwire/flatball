@@ -65,7 +65,13 @@ const dropDown3 = document.createElement('div')
       <p>A Homerun scores all current baserunners including the batter</p>
       </div>
     </div>`
-  dropDownContainer.append(dropDown1," || ", dropDown2," || ", dropDown3," || ", dropDown4)
+    const dropDown5 = document.createElement('div')
+      dropDown5.setAttribute("class","dropdown")
+      dropDown5.innerHTML = `<br><span id="dropTitle">Past Games</span>
+        <div class="dropdown-content">
+          <div id=savedgames-container><p id="games-scroll"></p></div>`
+
+  dropDownContainer.append(dropDown5," || ",dropDown1," || ", dropDown2," || ", dropDown3," || ", dropDown4)
   mainPageDiv.append(dropDownContainer)
   mainPageDiv.append(instructionsDiv, dropDownContainer)
 //--------end instructionsDiv Hover --------------//

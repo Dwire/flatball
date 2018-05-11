@@ -130,6 +130,7 @@ const bothControllers = document.createElement('div')
 
 
 function inningCount() {
+  // const savedGames = document.getElementById('games-scroll')
   let outCount = store.game_stats.out_count
   // let outCount = 9
   let inning = ""
@@ -166,7 +167,10 @@ function inningCount() {
         inning = "Bottom 3rd"
         break;
     case 18:
-        alert(`GAME OVER: Final Score: [Home Team: ${store.game_stats.home_score}] [Away Team: ${store.game_stats.away_score}]`);
+        alert(`GAME OVER: Final Score: [Home Team: ${store.game_stats.home_score}] [Away Team: ${store.game_stats.away_score}]`)
+        // game = document.createElement(p)
+        // game.innerText = store.game_stats
+        // savedGames.append(game)
         break;
 }
   return inning

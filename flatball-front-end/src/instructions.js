@@ -50,7 +50,7 @@ const dropDown3 = document.createElement('div')
   dropDown3.setAttribute("class","dropdown")
   dropDown3.innerHTML = `<br><span class="dropTitles"><h3>Pitching Controls</h3></span>
     <div class="dropdown-content">
-      <p>- The Pitcher is given two options: [Fastball] or [Special Pitch]</p><p>- [Fastball]: Nothing fancy here just a solid fastball that will wind up giving you a solid and steady result</p><p>- [Special Pitch]: The name says it all..you throw this mind-bending pitch and you land the best shot at making your opponent dance at the batter's box. However, it also can cause you to serve thr fattest meatball the Flatiron District has seen in recent years, right over the plate for the batter to clobber over the cheap seats.... You Have Been Warned.</p>
+      <p>- The Pitcher is given two options: [Fastball] or [Special Pitch]</p><p>- [Fastball]: Nothing fancy here just a solid fastball that will wind up giving you a solid and steady result</p><p>- [Special Pitch]: The name says it all..you throw this mind-bending pitch and you land the best shot at making your opponent dance at the batter's box. However, it also can cause you to serve the fattest meatball the Flatiron District has seen in recent years, right over the plate for the batter to clobber over the cheap seats.... You Have Been Warned.</p>
     </div>
   </div>`
   const dropDown4 = document.createElement('div')

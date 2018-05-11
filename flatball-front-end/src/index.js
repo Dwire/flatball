@@ -405,19 +405,18 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   // end --- display and reseting balls/strikes/change of inning/controls---//
   function gameOver() {
-    // const gameObj = store.game_stats
-    let obj = {
-      home_score: store.game_stats.away_score,
-      away_score: store.game_stats.home_score,
-      out_count: store.game_stats.out_count
-    }
-
+    const gameObj = store.game_stats
+    // let obj = {
+    //   home_score: store.game_stats.away_score,
+    //   away_score: store.game_stats.home_score,
+    //   out_count: store.game_stats.out_count
+    // }
     const outs = store.game_stats.out_count
     const screen = document.querySelector('body')
 
-    if (outs >= 3) {
-      GameAdapter.postGame(obj)
-      console.log(obj);
+    if (outs >= 18) {
+      GameAdapter.postGame(gameObj)
+      console.log(gameObj);
       // screen.innerHTML = ""
       //
       // screen.innerHTML = `

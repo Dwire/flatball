@@ -5,7 +5,7 @@ const mainPageDiv = document.createElement('div')
   mainPageDiv.setAttribute('id', 'main-page-div')
 const welcomeMessage = document.createElement('h1')
   welcomeMessage.setAttribute('id','main-welcome')
-  welcomeMessage.innerHTML = `<img id="img1" src="https://cdn0.iconfinder.com/data/icons/flatty-balls/633/03_FlatBallIcons_Baseball-512.png" alt="Baseball" height='75' width="75">  Welcome to FlatBall  <img id="img2" src="https://cdn0.iconfinder.com/data/icons/flatty-balls/633/03_FlatBallIcons_Baseball-512.png" alt="Baseball" height="75" width="75"><br> - Where Everyone Can PLAY BALL -`
+  welcomeMessage.innerHTML = `<img id="img1" class="animation-target" src="https://cdn0.iconfinder.com/data/icons/flatty-balls/633/03_FlatBallIcons_Baseball-512.png" alt="Baseball" height='75' width="75">  Welcome to FlatBall  <img id="img2" class="animation-target"src="https://cdn0.iconfinder.com/data/icons/flatty-balls/633/03_FlatBallIcons_Baseball-512.png" alt="Baseball" height="75" width="75"><br>Where Everyone Can PLAY BALL`
   mainPageDiv.append(welcomeMessage)
   appBody.append(mainPageDiv)
 
@@ -15,7 +15,7 @@ const newGameButtonDiv = document.createElement('div')
   mainPageDiv.append(newGameButtonDiv)
 const newGameButton = document.createElement('button')
   newGameButton.setAttribute('id', 'new-game-button')
-  newGameButton.setAttribute('class', 'button')
+  newGameButton.setAttribute('class', 'button animated infinite bounce')
   newGameButton.innerText = 'Play Ball!'
   newGameButtonDiv.append(newGameButton)
 // end //
@@ -53,7 +53,19 @@ const dropDown3 = document.createElement('div')
       <p>- The Pitcher is given two options: [Fastball] or [Special Pitch]</p><p>- [Fastball]: Nothing fancy here just a solid fastball that can either wind up giving you a solid and steady result</p><p>- [Special Pitch]: The name says it all..you throw this mind-bending pitch and you land the best shot at making your opponent dance at the batter's box. However, it also can cause you to serve thr fattest meatball the Flatiron District has seen in recent years, right over the plate for the batter to clobber over the cheap seats.... You Have Been Warned.</p>
     </div>
   </div>`
-  dropDownContainer.append(dropDown1," || ", dropDown2," || ", dropDown3)
+  const dropDown4 = document.createElement('div')
+    dropDown4.setAttribute("class","dropdown")
+    dropDown4.innerHTML = `<br><span class="dropTitles"><h3>Our "Simplistic" Way of Baseball</h3></span>
+      <div class="dropdown-content">
+      <p>All outs are recorded via a strikeout or an outcome from our play generator</p>
+      <p> YOU CANNOT GET AN OUT ON A HIT (ex. throwing the runner at 3rd out, on a single)</p>
+      <p>A Single advances all baserunners by 1 base</p>
+      <p>A Double advances all baserunners by 2 bases</p>
+      <p>A Triple advances all baserunners by 3 bases</p>
+      <p>A Homerun scores all current baserunners including the batter</p>
+      </div>
+    </div>`
+  dropDownContainer.append(dropDown1," || ", dropDown2," || ", dropDown3," || ", dropDown4)
   mainPageDiv.append(dropDownContainer)
   mainPageDiv.append(instructionsDiv, dropDownContainer)
 //--------end instructionsDiv Hover --------------//

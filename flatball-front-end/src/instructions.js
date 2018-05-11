@@ -25,7 +25,7 @@ const newGameButton = document.createElement('button')
 //Instructions on How to Play
 const instructionsDiv = document.createElement('div')
   instructionsDiv.setAttribute('id','instructions')
-  instructionsDiv.innerHTML = `<h1 id="how-to" class="dropTitles animation-target"><img id="img4" class="animated infinite fadeOutDown" src='https://images.clipartuse.com/edcfd46ea531eb1b18c3192ea6c29616_the-top-5-best-blogs-on-eyes-looking-down-clipart_602-505.png'> How To Play <img id="img5" class="animated infinite fadeOutDown" src='https://images.clipartuse.com/edcfd46ea531eb1b18c3192ea6c29616_the-top-5-best-blogs-on-eyes-looking-down-clipart_602-505.png'><h1>`
+  instructionsDiv.innerHTML = `<h1 id="how-to" class="dropTitles"><img id="img4" class="animated infinite fadeOutDown" src='https://images.clipartuse.com/edcfd46ea531eb1b18c3192ea6c29616_the-top-5-best-blogs-on-eyes-looking-down-clipart_602-505.png'> How To Play <img id="img5" class="animated infinite fadeOutDown" src='https://images.clipartuse.com/edcfd46ea531eb1b18c3192ea6c29616_the-top-5-best-blogs-on-eyes-looking-down-clipart_602-505.png'><h1>`
 //Hoverable DropDown//
 
 const dropDownContainer = document.createElement('div')
